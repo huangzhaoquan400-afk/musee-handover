@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
+<html lang="zh-CN" data-immersive-translate-page-theme="light"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MUSEE 实习生工作交接</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 <style>
 :root {
   --primary: #6366f1;
@@ -516,12 +514,12 @@ body {
   <div class="logo-icon">M</div>
   <h1>MUSEE 实习生工作交接</h1>
   <span class="subtitle">客诉与运营工作指南</span>
-<button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">🔒 编辑</button>
+<button class="admin-toggle active" id="adminToggle" onclick="toggleAdmin()">🔓 退出编辑</button>
   </header>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="close" onclick="closeLightbox()">&times;</span>
+  <span class="close" onclick="closeLightbox()">×</span>
   <img id="lightboxImg" src="" alt="">
 </div>
 
@@ -529,11 +527,11 @@ body {
   <!-- Sidebar Navigation -->
   <nav class="sidebar" id="sidebar">
     <div class="nav-section">
-      <a class="nav-item active" onclick="scrollToSection('overview')">概览</a>
+      <a class="nav-item" onclick="scrollToSection('overview')">概览</a>
     </div>
     <div class="nav-section">
       <div class="nav-group-label">工作流程</div>
-      <a class="nav-item" onclick="scrollToSection('daily-flow')">每日工作流程</a>
+      <a class="nav-item active" onclick="scrollToSection('daily-flow')">每日工作流程</a>
       <a class="nav-item" onclick="scrollToSection('permissions')">权限申请 &amp; SQL</a>
     </div>
     <div class="nav-section">
@@ -574,9 +572,9 @@ body {
         <div class="section-icon icon-purple">📋</div>
         <h2>每日工作流程</h2>
         <span class="section-badge">每天</span>
-        <span class="toggle-icon">▼</span>
+        <span class="toggle-icon open">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body open">
         <div class="card">
           <p>每日工作主线流程如下：</p>
           <ol class="step-list">
@@ -1121,7 +1119,7 @@ ori_log[<span class="string">'pay_apps'</span>] <span class="keyword">AS</span> 
 GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="string">'$.pay_methods'</span>) <span class="keyword">AS</span> pay_methods,
 GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="string">'$.reason'</span>) <span class="keyword">AS</span> reason
 <span class="keyword">FROM</span> dwd_dating_summary_action_log_1h 
-<span class="keyword">WHERE</span> uid = <span class="string">'${uid}'</span> <span class="keyword">AND</span> dt >= <span class="string">'${dt}'</span>
+<span class="keyword">WHERE</span> uid = <span class="string">'${uid}'</span> <span class="keyword">AND</span> dt &gt;= <span class="string">'${dt}'</span>
 <span class="keyword">AND</span> act=<span class="string">'products_with_paytype'</span>
 <span class="keyword">ORDER BY</span> ctime <span class="keyword">DESC</span></div>
         </div>  
@@ -1151,7 +1149,7 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
           </div>
        
       </div>
-    </section>
+    </div></section>
 
     <!-- Complaint Reply -->
     <section id="complaint-reply" class="section">
@@ -1317,7 +1315,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h4>想当币商</h4>
           <div class="reply-box">Thanks for your supporting to our app. If you would like to be a coin seller, please contact our staff on whatsapp：+1 (385) 266-8868, our staff will reply.</div>
       </div>
-    </section><section id="im-review" class="section">
+    </div></div></div></div></div></div></section><section id="im-review" class="section">
       <div class="section-header" onclick="toggleSection('im-review')">
         <div class="section-icon icon-teal">🔍</div>
         <h2>用户 IM 审核</h2>
@@ -1366,7 +1364,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             </tbody>
           </table>
           <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">* 注：查看既往处理记录可找到更多案例</p>
-          <p style="font-size:13px;color:var(--text-muted);">📖 参考文档：<a href="https://nemo.yuque.com/g/caq9mt/pf481c/fyisu7q7wz38so28/collaborator/join?token=CUz8CLGrytXNd8T2&source=doc_collaborator#" target="_blank" style="color:var(--primary);">《反垃圾策略补充》</a></p>
+          <p style="font-size:13px;color:var(--text-muted);">📖 参考文档：<a href="https://nemo.yuque.com/g/caq9mt/pf481c/fyisu7q7wz38so28/collaborator/join?token=CUz8CLGrytXNd8T2&amp;source=doc_collaborator#" target="_blank" style="color:var(--primary);">《反垃圾策略补充》</a></p>
         </div>
       </div>
     </section>
@@ -1623,12 +1621,12 @@ navToggle.addEventListener('click', () => {
 </script>
 
 <!-- Admin Bar -->
-<div class="admin-bar" id="adminBar">
+<div class="admin-bar show" id="adminBar">
   <span style="font-weight:600;font-size:14px;white-space:nowrap;">🔧 管理</span>
   <input type="password" id="tokenInput" placeholder="GitHub Token">
   <input type="text" id="commitMsg" placeholder="更改说明（可选）" style="flex:0.4;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;">
   <button class="btn btn-primary" onclick="saveToGitHub()" id="saveBtn">💾 保存到 GitHub</button>
-  <span class="status" id="adminStatus"></span>
+  <span class="status" id="adminStatus">正在保存...</span>
 </div>
 
 <!-- Back to top -->
@@ -1743,5 +1741,6 @@ window.addEventListener('scroll', function() {
 });
 
 </script>
-</body>
-</html>
+
+
+</body><div id="immersive-translate-popup" style="all: initial"></div></html>
