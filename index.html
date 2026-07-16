@@ -439,6 +439,15 @@ body {
   }
 }
 
+
+.edit-btn {
+  display: none;
+  font-size: 13px; color: #6366f1;
+  cursor: pointer; padding: 2px 10px; border-radius: 4px;
+  border: 1px solid #6366f1; margin-left: 8px;
+  white-space: nowrap; user-select: none;
+}
+.edit-btn:hover { background: #eef2ff; }
 /* Admin mode */
 .admin-toggle {
   background: none; border: 1px solid var(--border);
@@ -577,7 +586,9 @@ body {
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-1">
+          <span class="edit-btn" onclick="editCard('card-auto-1')">✏️ 编辑</span>
+          
           <p>每日工作主线流程如下：</p>
           <ol class="step-list">
             <li>
@@ -606,7 +617,9 @@ body {
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-2">
+          <span class="edit-btn" onclick="editCard('card-auto-2')">✏️ 编辑</span>
+          
           <h3>① OMS 后台权限申请</h3>
           <p>钉钉工作台 → OA审批 → 办公权限申请</p>
           <div class="info-box">
@@ -619,14 +632,18 @@ body {
             <img src="images/image3.png" alt="OMS权限类型" onclick="openLightbox(this.src)">
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="card-auto-3">
+          <span class="edit-btn" onclick="editCard('card-auto-3')">✏️ 编辑</span>
+          
           <h3>② BI 报表权限申请</h3>
           <p>钉钉工作台 → OA审批 → 办公权限申请</p>
           <div class="img-single">
             <img src="images/image4.png" alt="BI报表权限" onclick="openLightbox(this.src)">
           </div>
         </div>
-        <div class="card">
+        <div class="card" id="card-auto-4">
+          <span class="edit-btn" onclick="editCard('card-auto-4')">✏️ 编辑</span>
+          
           <h3>③ 网络连接</h3>
           <p>公司网络为隐藏网络，部门网络信息如下：</p>
           <div class="info-box">
@@ -634,7 +651,9 @@ body {
             <span style="font-size:13px;color:var(--text-muted);">如果密码不正确，联系蔡志毫</span>
           </div>
         </div>
-                <div class="card">
+                <div class="card" id="card-auto-5">
+          <span class="edit-btn" onclick="editCard('card-auto-5')">✏️ 编辑</span>
+          
           <h3>④ SQL 汇总</h3>
           <p><strong>BI 入口：</strong>自助分析 → 右键新建节点 → 粘贴 SQL → 按保存键</p>
           <div class="img-gallery">
@@ -1137,7 +1156,9 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-6">
+          <span class="edit-btn" onclick="editCard('card-auto-6')">✏️ 编辑</span>
+          
           <div class="info-box">
             <strong>操作路径：</strong>OMS 系统 → 客服管理 → 在线客服（群聊）
           </div>
@@ -1162,7 +1183,9 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-7">
+          <span class="edit-btn" onclick="editCard('card-auto-7')">✏️ 编辑</span>
+          
           <h3>操作流程</h3>
           <div class="info-box">
             <strong>操作路径：</strong>OMS 系统 → 申诉中心 → 申诉列表
@@ -1207,6 +1230,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body">
         <div class="card" id="issue-recharge">
+          <span class="edit-btn" onclick="editCard('issue-recharge')">✏️ 编辑</span>
+          
           <h3>1. 用户无法充值</h3>
           <div class="info-box">
             <strong>通过 uid 和反馈时间</strong>，在 BI 中查询四大支付条件 sql，通过 reason 的原因回复用户。如果支付条件都正常，让用户确保网络再尝试支付。
@@ -1238,6 +1263,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <div class="reply-box">Hello, I see that your latest recharge orders are all successful. If you have any further questions, please contact us again. Thank you for your understanding.</div>
         </div>
 <div class="card" id="issue-account">
+          <span class="edit-btn" onclick="editCard('issue-account')">✏️ 编辑</span>
+          
           <h3>2. 帐号换绑 &amp; 账号恢复</h3>
           <p>用户申诉需要恢复账号或换绑账户信息时，需提供以下信息：</p>
           <ol>
@@ -1252,6 +1279,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h4>账号恢复</h4>
           <div class="reply-box">If you wish to reactivate your account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
         <div class="card" id="issue-call-game">
+          <span class="edit-btn" onclick="editCard('issue-call-game')">✏️ 编辑</span>
+          
           <h3>3. 无法通话 &amp; 游戏问题</h3>
           <h4>① 用户反馈无法通话</h4>
           <p>用户钻石被扣 / 使用情况查询路径：</p>
@@ -1275,6 +1304,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h5>发放蓝钻时的说明</h5>
           <div class="reply-box">发放蓝钻不是一直都有的（防止用户钻空子），是因为客户是我们的忠实客户，是在我们进行申请之后才能发放的，请客户及时使用，这些蓝钻会在下个月的一号清零。</div>
         <div class="card" id="issue-behavior">
+          <span class="edit-btn" onclick="editCard('issue-behavior')">✏️ 编辑</span>
+          
           <h3>4. 用户行为问题</h3>
           <h4>① 主播多账号</h4>
           <p>用户或工会长反馈一个主播拥有多个账号：</p>
@@ -1291,6 +1322,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h5>警告用户</h5>
           <div class="reply-box">You have been reported and verified for abusing in your user name. （具体违规行为）Please stop your behavior and change it. If this behavior is reported and verified again, we will ban your account.</div>
         <div class="card" id="issue-topup">
+          <span class="edit-btn" onclick="editCard('issue-topup')">✏️ 编辑</span>
+          
           <h3>5. 充值未到账（反复反馈 / 在线客服）</h3>
           <h4>① 核实钻石充值订单</h4>
           <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择钻石 → 输入 uid 和时间</div>
@@ -1303,6 +1336,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h4>③ 订单 cancel</h4>
           <p>如果订单状态显示 cancel 而用户反复反馈，将支付截图及 uid 发到 Feedback Issue 群并 <span class="tag tag-yellow">@ankit</span> 查询订单状态。</p>
         <div class="card" id="issue-live">
+          <span class="edit-btn" onclick="editCard('issue-live')">✏️ 编辑</span>
+          
           <h3>6. Live / Party Room 问题</h3>
           <h4>① 无法观看直播 / 黑屏</h4>
           <p>让用户提供截图，同时检查网络设置。</p>
@@ -1311,6 +1346,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <p>目前只有 LV1 以上用户才能看到 Live/Party Room &amp; Game。回复用户：</p>
           <div class="reply-box">Hello, we are very sorry for the inconvenience. Currently, live streaming permissions are only open to hosts, not to users. We suggest you go to the party room to play. Thank you for your support and understanding.</div>
         <div class="card" id="issue-guild">
+          <span class="edit-btn" onclick="editCard('issue-guild')">✏️ 编辑</span>
+          
           <h3>7. 想当工会长或币商</h3>
           <h4>想当工会长</h4>
           <div class="reply-box">Thanks for your supporting to our app. If you would like to be an agency leader, please contact our staff on whatsapp：+44 7749 895663, our staff will reply.</div>
@@ -1325,7 +1362,9 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-8">
+          <span class="edit-btn" onclick="editCard('card-auto-8')">✏️ 编辑</span>
+          
           <div class="info-box"><strong>操作路径：</strong>OMS → 内容审核 → 用户 im 违规审核</div>
           <div class="img-gallery">
             <img src="images/image24.png" alt="IM审核" onclick="openLightbox(this.src)">
@@ -1338,7 +1377,9 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           </ul>
           <div class="highlight-box">不确定是否需要封禁？截图私信询问 <span class="tag tag-blue">@罗昕雨</span></div>
         </div>
-        <div class="card">
+        <div class="card" id="card-auto-9">
+          <span class="edit-btn" onclick="editCard('card-auto-9')">✏️ 编辑</span>
+          
           <h3>违规封禁案例</h3>
           <div class="img-gallery">
             <img src="images/image26.png" alt="封禁案例" onclick="openLightbox(this.src)">
@@ -1379,12 +1420,16 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-10">
+          <span class="edit-btn" onclick="editCard('card-auto-10')">✏️ 编辑</span>
+          
           <h3>业务背景</h3>
           <p>业务相关国家接入的支付渠道不稳定，用户充值创单成功后可能面临订单充值失败、被取消、到账延迟等情况，该类订单称为 <strong>"掉单" / "充值不到账订单"</strong>。需跟进掉单情况，提高用户充值成功率。</p>
           <div class="img-single"><img src="images/image36.png" alt="掉单业务背景" onclick="openLightbox(this.src)"></div>
         </div>
-        <div class="card">
+        <div class="card" id="card-auto-11">
+          <span class="edit-btn" onclick="editCard('card-auto-11')">✏️ 编辑</span>
+          
           <h3>需要你做的</h3>
           <p>了解充值不到账订单处理流程（由印度小编 <span class="tag tag-yellow">@ankit</span> 负责掉单收集），将 OMS 每日收到的所有掉单反馈到不同支付渠道，跟进处理结果，提高支付成功率。</p>
         </div>
@@ -1399,7 +1444,9 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-12">
+          <span class="edit-btn" onclick="editCard('card-auto-12')">✏️ 编辑</span>
+          
           <h3>掉单渠道表格</h3>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
             <span class="tag tag-blue">网盟 - QUARK</span>
@@ -1435,7 +1482,9 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-13">
+          <span class="edit-btn" onclick="editCard('card-auto-13')">✏️ 编辑</span>
+          
           <h3>处理原则</h3>
           <div class="info-box"><ol><li>先在商户平台上寻找是否有对应订单</li><li>若有 → 反馈在商户平台上</li><li>若无 → 登记于网盟充值问题汇总表</li></ol></div>
           <h4>商户平台链接</h4>
@@ -1478,7 +1527,9 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="toggle-icon">▼</span>
       </div>
       <div class="section-body">
-        <div class="card">
+        <div class="card" id="card-auto-14">
+          <span class="edit-btn" onclick="editCard('card-auto-14')">✏️ 编辑</span>
+          
           <div class="img-gallery">
             <img src="images/image46.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
             <img src="images/image47.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
@@ -1634,114 +1685,116 @@ navToggle.addEventListener('click', () => {
 <!-- Back to top -->
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<script>
-
-// Admin mode toggle
-let adminMode = false;
-const tokenKey = 'gh_token_musee';
-let currentContent = {};
+<script>﻿var adminMode = false;
+var tokenKey = "gh_token_musee";
 
 function toggleAdmin() {
   adminMode = !adminMode;
-  const btn = document.getElementById('adminToggle');
-  const bar = document.getElementById('adminBar');
-  btn.classList.toggle('active');
-  btn.textContent = adminMode ? '🔓 退出编辑' : '🔒 编辑';
-  bar.classList.toggle('show');
-  
-  document.querySelectorAll('.edit-btn').forEach(el => el.style.display = adminMode ? 'inline' : 'none');
-  
+  var btn = document.getElementById("adminToggle");
+  var bar = document.getElementById("adminBar");
+  btn.classList.toggle("active");
+  btn.textContent = adminMode ? "\uD83D\uDD13 退出编辑" : "\uD83D\uDD12 编辑";
+  bar.classList.toggle("show");
+  document.querySelectorAll(".edit-btn").forEach(function(el) { el.style.display = adminMode ? "inline" : "none"; });
   if (adminMode) {
-    const saved = sessionStorage.getItem(tokenKey);
-    if (saved) document.getElementById('tokenInput').value = saved;
+    var saved = sessionStorage.getItem(tokenKey);
+    if (saved) document.getElementById("tokenInput").value = saved;
   }
 }
 
-// Load current content
-function loadContent() {
-  currentContent = {};
-  document.querySelectorAll('.card').forEach((card, ci) => {
-    const key = card.id || 'card-' + ci;
-    currentContent[key] = card.innerHTML;
+function editCard(cardId) {
+  var card = document.getElementById(cardId);
+  if (!card) return;
+  var modal = document.getElementById("editModal");
+  var textarea = document.getElementById("editTextarea");
+  var title = document.getElementById("editTitle");
+  var h3 = card.querySelector("h3");
+  title.textContent = h3 ? h3.textContent : "编辑内容";
+  // Collect text elements, skip image containers
+  var texts = [];
+  card.querySelectorAll("p, li, h4, h5, .reply-box, .info-box, .highlight-box, .warning-box, .code-block").forEach(function(el) {
+    if (el.closest(".img-gallery") || el.closest(".img-single")) return;
+    texts.push(el.outerHTML);
   });
+  textarea.value = texts.join("\n---\n");
+  modal.dataset.editCardId = cardId;
+  modal.style.display = "flex";
+}
+
+function closeEditModal() {
+  document.getElementById("editModal").style.display = "none";
+}
+
+function saveEdit() {
+  var modal = document.getElementById("editModal");
+  var textarea = document.getElementById("editTextarea");
+  var cardId = modal.dataset.editCardId;
+  var card = document.getElementById(cardId);
+  if (!card) { closeEditModal(); return; }
+  var parts = textarea.value.split("\n---\n");
+  var idx = 0;
+  card.querySelectorAll("p, li, h4, h5, .reply-box, .info-box, .highlight-box, .warning-box, .code-block").forEach(function(el) {
+    if (el.closest(".img-gallery") || el.closest(".img-single")) return;
+    if (idx < parts.length && parts[idx].trim()) { el.outerHTML = parts[idx]; idx++; }
+  });
+  modal.style.display = "none";
 }
 
 function saveToGitHub() {
-  const token = document.getElementById('tokenInput').value.trim();
-  const msg = document.getElementById('commitMsg').value.trim() || 'Update content via admin panel';
-  const status = document.getElementById('adminStatus');
-  
-  if (!token) { status.textContent = '请输入 GitHub Token'; status.className = 'status error'; return; }
-  
+  var token = document.getElementById("tokenInput").value.trim();
+  var msg = document.getElementById("commitMsg").value.trim() || "Update content via admin panel";
+  var status = document.getElementById("adminStatus");
+  if (!token) { status.textContent = "请输入 GitHub Token"; status.className = "status error"; return; }
   sessionStorage.setItem(tokenKey, token);
-  status.textContent = '正在保存...'; status.className = 'status';
-  
-  // Get latest content
-  loadContent();
-  const html = document.documentElement.outerHTML;
-  
-  // GitHub API - update index.html
-  const repo = 'huangzhaoquan400-afk/musee-handover';
-  const filePath = 'index.html';
-  
-  // First get the SHA of the current file
-  fetch('https://api.github.com/repos/' + repo + '/contents/' + filePath, {
-    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  status.textContent = "正在保存..."; status.className = "status";
+  var btn = document.getElementById("saveBtn");
+  btn.textContent = "⏳ 保存中..."; btn.disabled = true;
+  var html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
+  var repo = "huangzhaoquan400-afk/musee-handover";
+  fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
+    headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
   })
-  .then(r => r.json())
-  .then(data => {
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
     if (data.message) throw new Error(data.message);
-    const sha = data.sha;
-    const content = btoa(unescape(encodeURIComponent(html)));
-    
-    return fetch('https://api.github.com/repos/' + repo + '/contents/' + filePath, {
-      method: 'PUT',
-      headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
-      body: JSON.stringify({
-        message: msg,
-        content: content,
-        sha: sha,
-        branch: 'main'
-      })
+    return fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
+      method: "PUT",
+      headers: { "Authorization": "token " + token, "Content-Type": "application/json", "Accept": "application/vnd.github.v3+json" },
+      body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(html))), sha: data.sha, branch: "main" })
     });
   })
-  .then(r => r.json())
-  .then(data => {
-    if (data.message) throw new Error(data.message);
-    status.textContent = '✅ 保存成功！页面将在 1-2 分钟后更新'; status.className = 'status success';
-    document.getElementById('saveBtn').textContent = '✅ 已保存';
-    setTimeout(() => { document.getElementById('saveBtn').textContent = '💾 保存到 GitHub'; }, 3000);
+  .then(function(r) { return r.json(); })
+  .then(function(data) {
+    if (data.content) {
+      status.textContent = "✅ 保存成功！1-2分钟后更新"; status.className = "status success";
+      btn.textContent = "✅ 已保存";
+      setTimeout(function() { btn.textContent = "💾 保存到 GitHub"; btn.disabled = false; }, 2000);
+    }
   })
-  .catch(err => {
-    status.textContent = '❌ 错误: ' + err.message; status.className = 'status error';
-    document.getElementById('saveBtn').textContent = '💾 保存到 GitHub';
+  .catch(function(err) {
+    status.textContent = "❌ " + err.message; status.className = "status error";
+    btn.textContent = "💾 保存到 GitHub"; btn.disabled = false;
   });
 }
 
-// Load content on page load
-document.addEventListener('DOMContentLoaded', loadContent);
-
-// Watch content changes in admin mode
-document.addEventListener('click', function(e) {
-  if (adminMode && e.target.classList.contains('edit-btn')) {
-    const card = e.target.closest('.card');
-    if (card && card.contentEditable !== 'true') {
-      card.contentEditable = 'true';
-      card.classList.add('editing');
-      e.target.textContent = '✅ 完成编辑';
-    } else if (card) {
-      card.contentEditable = 'false';
-      card.classList.remove('editing');
-      e.target.textContent = '✏️ 编辑';
-    }
-  }
+window.addEventListener("scroll", function() {
+  var el = document.getElementById("backTop");
+  if (el) el.classList.toggle("show", window.scrollY > 500);
 });
-
-// Back to top button
-window.addEventListener('scroll', function() {
-  document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
-});
-
 </script>
+
+<div class="modal" id="editModal" style="display:none;position:fixed;z-index:400;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:12px;width:90%;max-width:800px;max-height:85vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid #e2e8f0;">
+      <h3 id="editTitle" style="font-size:16px;font-weight:600;margin:0;">编辑内容</h3>
+      <button onclick="closeEditModal()" style="background:none;border:none;font-size:24px;cursor:pointer;color:#64748b;">&times;</button>
+    </div>
+    <textarea id="editTextarea" style="flex:1;padding:20px 24px;border:none;font-size:14px;line-height:1.7;font-family:inherit;resize:none;outline:none;min-height:300px;width:100%;box-sizing:border-box;"></textarea>
+    <div style="display:flex;justify-content:flex-end;gap:8px;padding:12px 24px;border-top:1px solid #e2e8f0;">
+      <button onclick="closeEditModal()" style="padding:8px 20px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:14px;">取消</button>
+      <button onclick="saveEdit()" style="padding:8px 20px;border-radius:6px;border:none;background:#6366f1;color:#fff;cursor:pointer;font-size:14px;font-weight:500;">✅ 确认修改</button>
+    </div>
+  </div>
+</div>
 </body>
 </html>
