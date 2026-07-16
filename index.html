@@ -438,6 +438,74 @@ body {
     padding: 16px 0;
   }
 }
+
+/* Admin mode */
+.admin-toggle {
+  background: none; border: 1px solid var(--border);
+  border-radius: 6px; padding: 4px 12px;
+  font-size: 13px; cursor: pointer; color: var(--text-muted);
+  transition: all 0.2s; margin-left: 8px;
+}
+.admin-toggle:hover { background: #f1f5f9; color: var(--text); }
+.admin-toggle.active { background: #eef2ff; color: var(--primary); border-color: var(--primary); }
+
+.admin-bar {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #fff; border-top: 2px solid var(--primary);
+  padding: 12px 24px; z-index: 300;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  align-items: center; gap: 16px;
+}
+.admin-bar.show { display: flex; }
+.admin-bar input[type="password"] {
+  flex: 1; max-width: 400px;
+  padding: 8px 12px; border: 1px solid var(--border);
+  border-radius: 6px; font-size: 14px;
+}
+.admin-bar .btn {
+  padding: 8px 20px; border-radius: 6px; border: none;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+}
+.admin-bar .btn-primary { background: var(--primary); color: #fff; }
+.admin-bar .btn-primary:hover { background: var(--primary-dark); }
+.admin-bar .btn-success { background: #16a34a; color: #fff; }
+.admin-bar .btn-success:hover { background: #15803d; }
+.admin-bar .status { font-size: 13px; color: var(--text-muted); }
+.admin-bar .status.error { color: #dc2626; }
+.admin-bar .status.success { color: #16a34a; }
+
+.edit-btn {
+  display: none;
+  float: right; font-size: 13px; color: var(--primary);
+  cursor: pointer; padding: 2px 8px; border-radius: 4px;
+  border: 1px solid transparent;
+}
+.edit-btn:hover { background: #eef2ff; border-color: var(--primary); }
+.editing .edit-btn { border-color: var(--primary); background: #eef2ff; }
+
+.editable-text {
+  outline: none;
+  transition: outline 0.2s;
+}
+.editing .editable-text:focus {
+  outline: 2px dashed var(--primary);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Back to top */
+.back-top {
+  display: none; position: fixed;
+  bottom: 80px; right: 24px;
+  width: 40px; height: 40px;
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 50%; cursor: pointer;
+  font-size: 18px; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); z-index: 250;
+}
+.back-top.show { display: flex; }
+.back-top:hover { background: #f1f5f9; }
 </style>
 </head>
 <body>
@@ -448,7 +516,8 @@ body {
   <div class="logo-icon">M</div>
   <h1>MUSEE 实习生工作交接</h1>
   <span class="subtitle">客诉与运营工作指南</span>
-</header>
+<button class="admin-toggle" id="adminToggle" onclick="toggleAdmin()">🔒 编辑</button>
+  </header>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
@@ -1551,6 +1620,128 @@ const sidebar = document.getElementById('sidebar');
 navToggle.addEventListener('click', () => {
   sidebar.classList.toggle('mobile-open');
 });
+</script>
+
+<!-- Admin Bar -->
+<div class="admin-bar" id="adminBar">
+  <span style="font-weight:600;font-size:14px;white-space:nowrap;">🔧 管理</span>
+  <input type="password" id="tokenInput" placeholder="GitHub Token">
+  <input type="text" id="commitMsg" placeholder="更改说明（可选）" style="flex:0.4;padding:8px 12px;border:1px solid var(--border);border-radius:6px;font-size:14px;">
+  <button class="btn btn-primary" onclick="saveToGitHub()" id="saveBtn">💾 保存到 GitHub</button>
+  <span class="status" id="adminStatus"></span>
+</div>
+
+<!-- Back to top -->
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<script>
+
+// Admin mode toggle
+let adminMode = false;
+const tokenKey = 'gh_token_musee';
+let currentContent = {};
+
+function toggleAdmin() {
+  adminMode = !adminMode;
+  const btn = document.getElementById('adminToggle');
+  const bar = document.getElementById('adminBar');
+  btn.classList.toggle('active');
+  btn.textContent = adminMode ? '🔓 退出编辑' : '🔒 编辑';
+  bar.classList.toggle('show');
+  
+  document.querySelectorAll('.edit-btn').forEach(el => el.style.display = adminMode ? 'inline' : 'none');
+  
+  if (adminMode) {
+    const saved = sessionStorage.getItem(tokenKey);
+    if (saved) document.getElementById('tokenInput').value = saved;
+  }
+}
+
+// Load current content
+function loadContent() {
+  currentContent = {};
+  document.querySelectorAll('.card').forEach((card, ci) => {
+    const key = card.id || 'card-' + ci;
+    currentContent[key] = card.innerHTML;
+  });
+}
+
+function saveToGitHub() {
+  const token = document.getElementById('tokenInput').value.trim();
+  const msg = document.getElementById('commitMsg').value.trim() || 'Update content via admin panel';
+  const status = document.getElementById('adminStatus');
+  
+  if (!token) { status.textContent = '请输入 GitHub Token'; status.className = 'status error'; return; }
+  
+  sessionStorage.setItem(tokenKey, token);
+  status.textContent = '正在保存...'; status.className = 'status';
+  
+  // Get latest content
+  loadContent();
+  const html = document.documentElement.outerHTML;
+  
+  // GitHub API - update index.html
+  const repo = 'huangzhaoquan400-afk/musee-handover';
+  const filePath = 'index.html';
+  
+  // First get the SHA of the current file
+  fetch('https://api.github.com/repos/' + repo + '/contents/' + filePath, {
+    headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.message) throw new Error(data.message);
+    const sha = data.sha;
+    const content = btoa(unescape(encodeURIComponent(html)));
+    
+    return fetch('https://api.github.com/repos/' + repo + '/contents/' + filePath, {
+      method: 'PUT',
+      headers: { 'Authorization': 'token ' + token, 'Content-Type': 'application/json', 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({
+        message: msg,
+        content: content,
+        sha: sha,
+        branch: 'main'
+      })
+    });
+  })
+  .then(r => r.json())
+  .then(data => {
+    if (data.message) throw new Error(data.message);
+    status.textContent = '✅ 保存成功！页面将在 1-2 分钟后更新'; status.className = 'status success';
+    document.getElementById('saveBtn').textContent = '✅ 已保存';
+    setTimeout(() => { document.getElementById('saveBtn').textContent = '💾 保存到 GitHub'; }, 3000);
+  })
+  .catch(err => {
+    status.textContent = '❌ 错误: ' + err.message; status.className = 'status error';
+    document.getElementById('saveBtn').textContent = '💾 保存到 GitHub';
+  });
+}
+
+// Load content on page load
+document.addEventListener('DOMContentLoaded', loadContent);
+
+// Watch content changes in admin mode
+document.addEventListener('click', function(e) {
+  if (adminMode && e.target.classList.contains('edit-btn')) {
+    const card = e.target.closest('.card');
+    if (card && card.contentEditable !== 'true') {
+      card.contentEditable = 'true';
+      card.classList.add('editing');
+      e.target.textContent = '✅ 完成编辑';
+    } else if (card) {
+      card.contentEditable = 'false';
+      card.classList.remove('editing');
+      e.target.textContent = '✏️ 编辑';
+    }
+  }
+});
+
+// Back to top button
+window.addEventListener('scroll', function() {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 500);
+});
+
 </script>
 </body>
 </html>
