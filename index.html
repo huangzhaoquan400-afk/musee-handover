@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUSEE 实习生工作交接</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #6366f1;
+  --primary-light: #818cf8;
+  --primary-dark: #4f46e5;
+  --accent: #f59e0b;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --section-gap: 1.5rem;
+  --radius: 12px;
+  --sidebar-width: 260px;
+  --header-height: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* Header */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  z-index: 100;
+  gap: 12px;
+}
+
+.site-header .logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-light));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-weight: 700; font-size: 14px;
+  flex-shrink: 0;
+}
+
+.site-header h1 {
+  font-size: 16px; font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.site-header .subtitle {
+  font-size: 13px; color: var(--text-muted);
+  margin-left: auto;
+}
+
+.layout { display: flex; margin-top: var(--header-height); min-height: calc(100vh - var(--header-height)); }
+
+/* Sidebar */
+.sidebar {
+  position: fixed; top: var(--header-height); left: 0; bottom: 0;
+  width: var(--sidebar-width);
+  background: var(--card-bg);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 20px 0;
+  z-index: 50;
+}
+
+.sidebar::-webkit-scrollbar { width: 4px; }
+.sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.sidebar .nav-section { margin-bottom: 4px; }
+
+.sidebar .nav-item {
+  display: block;
+  padding: 8px 20px 8px 24px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.15s;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.sidebar .nav-item:hover { color: var(--text); background: #f1f5f9; }
+
+.sidebar .nav-item.active {
+  color: var(--primary);
+  border-left-color: var(--primary);
+  background: #eef2ff;
+  font-weight: 500;
+}
+
+.sidebar .nav-item.nav-h2 { padding-left: 40px; font-size: 13px; }
+.sidebar .nav-item.nav-h3 { padding-left: 52px; font-size: 12.5px; color: #94a3b8; }
+
+.sidebar .nav-group-label {
+  padding: 16px 20px 4px 24px;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+}
+
+/* Main Content */
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex: 1;
+  padding: 40px 48px 80px;
+  max-width: 960px;
+}
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 50%, #ede9fe 100%);
+  border-radius: var(--radius);
+  padding: 48px 40px;
+  margin-bottom: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -50%; right: -20%;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero h2 {
+  font-size: 28px; font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.hero p {
+  font-size: 15px; color: var(--text-muted);
+  max-width: 600px;
+  position: relative;
+}
+
+/* Accordion sections */
+.section {
+  margin-bottom: var(--section-gap);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s;
+}
+
+.section-header:hover { background: #f8fafc; }
+
+.section-header .section-icon {
+  width: 38px; height: 38px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.section-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.section-header .section-badge {
+  font-size: 11px; font-weight: 500;
+  color: var(--text-muted);
+  background: #f1f5f9;
+  padding: 2px 10px;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+
+.section-header .toggle-icon {
+  font-size: 18px;
+  color: var(--text-muted);
+  transition: transform 0.3s;
+  flex-shrink: 0;
+}
+
+.section-header .toggle-icon.open {
+  transform: rotate(180deg);
+}
+
+.section-body {
+  padding: 0 24px 20px;
+  display: none;
+}
+
+.section-body.open {
+  display: block;
+}
+
+/* Card inside section */
+.card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  padding: 20px;
+  margin-bottom: 14px;
+}
+
+.card:last-child { margin-bottom: 0; }
+
+.card h3 {
+  font-size: 16px; font-weight: 600;
+  margin-bottom: 12px;
+  display: flex; align-items: center;
+  gap: 8px;
+}
+
+.card h4 {
+  font-size: 14px; font-weight: 600;
+  margin: 16px 0 8px;
+  color: var(--primary-dark);
+}
+
+.card h5 {
+  font-size: 13.5px; font-weight: 600;
+  margin: 14px 0 6px;
+  color: var(--text);
+}
+
+.card p { margin-bottom: 8px; color: #334155; }
+.card p:last-child { margin-bottom: 0; }
+
+.card ul, .card ol { margin: 8px 0 8px 20px; color: #334155; }
+.card li { margin-bottom: 4px; }
+
+.card .highlight-box {
+  background: #fefce8;
+  border-left: 3px solid var(--accent);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.card .info-box {
+  background: #eef2ff;
+  border-left: 3px solid var(--primary-light);
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+.card .warning-box {
+  background: #fef2f2;
+  border-left: 3px solid #ef4444;
+  padding: 12px 16px;
+  border-radius: 0 6px 6px 0;
+  margin: 12px 0;
+  font-size: 14px;
+}
+
+/* Code block */
+.code-block {
+  background: #1e293b;
+  color: #e2e8f0;
+  border-radius: 8px;
+  padding: 16px 20px;
+  font-family: 'JetBrains Mono', 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-x: auto;
+  margin: 12px 0;
+  white-space: pre;
+}
+
+.code-block .keyword { color: #818cf8; }
+.code-block .string { color: #34d399; }
+.code-block .func { color: #fbbf24; }
+.code-block .comment { color: #64748b; }
+
+/* Reply template */
+.reply-box {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  font-size: 14px;
+  color: #166534;
+}
+
+.reply-box::before {
+  content: '回复模板';
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  color: #16a34a;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Step list */
+.step-list { list-style: none; padding: 0 !important; }
+.step-list li {
+  display: flex; gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--border);
+  align-items: flex-start;
+}
+.step-list li:last-child { border-bottom: none; }
+.step-list .step-num {
+  width: 24px; height: 24px;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 600;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Tag badges */
+.tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 12px; font-weight: 500; }
+.tag-blue { background: #eef2ff; color: var(--primary-dark); }
+.tag-green { background: #f0fdf4; color: #16a34a; }
+.tag-yellow { background: #fefce8; color: #a16207; }
+.tag-red { background: #fef2f2; color: #dc2626; }
+
+/* Section icon colors */
+.icon-purple { background: #eef2ff; color: var(--primary-dark); }
+.icon-amber { background: #fffbeb; color: #b45309; }
+.icon-green { background: #f0fdf4; color: #15803d; }
+.icon-blue { background: #eff6ff; color: #1d4ed8; }
+.icon-red { background: #fef2f2; color: #b91c1c; }
+.icon-teal { background: #f0fdfa; color: #0f766e; }
+
+/* Image gallery */
+.img-gallery {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin: 14px 0; justify-content: flex-start;
+}
+.img-gallery img {
+  max-width: 280px; width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px; cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.img-gallery img:hover { opacity: 0.85; transform: scale(1.02); }
+.img-single { margin: 14px 0; }
+.img-single img {
+  max-width: 100%; max-height: 400px;
+  border: 1px solid var(--border);
+  border-radius: 6px; cursor: pointer;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none; position: fixed;
+  z-index: 200; padding: 40px 20px;
+  left: 0; top: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.92);
+  text-align: center; overflow: auto;
+}
+.lightbox img {
+  max-width: 95%; max-height: 90vh;
+  margin: auto; display: block;
+  border-radius: 6px;
+}
+.lightbox .close {
+  position: fixed; top: 8px; right: 28px;
+  color: #fff; font-size: 40px; cursor: pointer;
+  font-weight: 300; z-index: 210;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .sidebar { display: none; }
+  .main-content { margin-left: 0; padding: 20px 16px 60px; }
+  .hero { padding: 28px 20px; }
+  .hero h2 { font-size: 22px; }
+  .section-header { padding: 14px 16px; }
+  .section-body { padding: 0 16px 16px; }
+  .site-header .subtitle { display: none; }
+  .img-gallery img { max-width: 100%; }
+}
+
+.mobile-nav-toggle {
+  display: none;
+  background: none; border: none;
+  font-size: 22px; color: var(--text);
+  cursor: pointer; padding: 4px;
+}
+
+@media (max-width: 900px) {
+  .mobile-nav-toggle { display: block; }
+  .sidebar.mobile-open {
+    display: block;
+    position: fixed;
+    top: var(--header-height);
+    left: 0; right: 0; bottom: 0;
+    width: 100%;
+    background: var(--card-bg);
+    z-index: 99;
+    border-right: none;
+    padding: 16px 0;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <button class="mobile-nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+  <div class="logo-icon">M</div>
+  <h1>MUSEE 实习生工作交接</h1>
+  <span class="subtitle">客诉与运营工作指南</span>
+</header>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="close" onclick="closeLightbox()">&times;</span>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<div class="layout">
+  <!-- Sidebar Navigation -->
+  <nav class="sidebar" id="sidebar">
+    <div class="nav-section">
+      <a class="nav-item active" onclick="scrollToSection('overview')">概览</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-group-label">工作流程</div>
+      <a class="nav-item" onclick="scrollToSection('daily-flow')">每日工作流程</a>
+      <a class="nav-item" onclick="scrollToSection('permissions')">权限申请 &amp; SQL</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-group-label">客诉处理</div>
+      <a class="nav-item" onclick="scrollToSection('svip-messages')">回复 SVIP 系统消息</a>
+      <a class="nav-item" onclick="scrollToSection('complaint-reply')">客诉回复</a>
+      <a class="nav-item nav-h2" onclick="scrollToSection('common-issues')">常见问题与回复</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-recharge')">无法充值</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-account')">帐号换绑 / 恢复</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-call-game')">通话 / 游戏问题</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-behavior')">用户行为问题</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-topup')">充值未到账</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-live')">Live / Party Room</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('issue-guild')">工会长 / 币商</a>
+    </div>
+    <div class="nav-section">
+      <div class="nav-group-label">审核与掉单</div>
+      <a class="nav-item" onclick="scrollToSection('im-review')">用户 IM 审核</a>
+      <a class="nav-item" onclick="scrollToSection('drop-order')">支付掉单处理</a>
+      <a class="nav-item nav-h2" onclick="scrollToSection('drop-supervise')">监督小编收集</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('drop-quark')">网盟掉单流程</a>
+      <a class="nav-item nav-h3" onclick="scrollToSection('drop-dpay')">Dpay 掉单流程</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+
+    <!-- Hero -->
+    <section id="overview" class="hero">
+      <h2>👋 欢迎来到 MUSEE 实习工作</h2>
+      <p>本指南涵盖了实习生日常工作的完整流程与标准操作规范，包括客诉系统回复、常见问题处理、IM 审核以及支付掉单处理等核心内容。点击各板块标题即可展开查看具体内容。</p>
+    </section>
+
+    <!-- Daily Flow -->
+    <section id="daily-flow" class="section">
+      <div class="section-header" onclick="toggleSection('daily-flow')">
+        <div class="section-icon icon-purple">📋</div>
+        <h2>每日工作流程</h2>
+        <span class="section-badge">每天</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <p>每日工作主线流程如下：</p>
+          <ol class="step-list">
+            <li>
+              <span class="step-num">1</span>
+              <div><strong>回复客诉</strong><br>
+                包括：<span class="tag tag-blue">在线客服·群聊</span> <span class="tag tag-blue">申诉列表回复</span> <span class="tag tag-blue">用户反馈处理</span>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">2</span>
+              <div><strong>用户 IM 审核</strong><br>重点封禁发送电话号码等违规行为</div>
+            </li>
+            <li>
+              <span class="step-num">3</span>
+              <div><strong>处理支付掉单问题</strong><br>及时反馈 <span class="tag tag-blue">Cathy</span></div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>    <!-- Permissions & SQL -->
+    <section id="permissions" class="section">
+      <div class="section-header" onclick="toggleSection('permissions')">
+        <div class="section-icon icon-amber">🔑</div>
+        <h2>权限申请 &amp; SQL 汇总</h2>
+        <span class="section-badge">入职准备</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <h3>① OMS 后台权限申请</h3>
+          <p>钉钉工作台 → OA审批 → 办公权限申请</p>
+          <div class="info-box">
+            <strong>权限类型：</strong>CMS &nbsp;|&nbsp; <strong>CMS 功能模块：</strong>如图 &nbsp;|&nbsp; <strong>备注：</strong>M1实习生替补<br>
+            <strong>业务负责人：</strong>大侠 &nbsp;|&nbsp; <strong>抄送人：</strong>梦情 &amp; 健华
+          </div>
+          <div class="img-gallery">
+            <img src="images/image1.png" alt="OMS权限申请" onclick="openLightbox(this.src)">
+            <img src="images/image2.png" alt="OMS权限设置" onclick="openLightbox(this.src)">
+            <img src="images/image3.png" alt="OMS权限类型" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+        <div class="card">
+          <h3>② BI 报表权限申请</h3>
+          <p>钉钉工作台 → OA审批 → 办公权限申请</p>
+          <div class="img-single">
+            <img src="images/image4.png" alt="BI报表权限" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+        <div class="card">
+          <h3>③ 网络连接</h3>
+          <p>公司网络为隐藏网络，部门网络信息如下：</p>
+          <div class="info-box">
+            <strong>名称：</strong>boloji_pro &nbsp;|&nbsp; <strong>密码：</strong>qbigxcwo<br>
+            <span style="font-size:13px;color:var(--text-muted);">如果密码不正确，联系蔡志毫</span>
+          </div>
+        </div>
+                <div class="card">
+          <h3>④ SQL 汇总</h3>
+          <p><strong>BI 入口：</strong>自助分析 → 右键新建节点 → 粘贴 SQL → 按保存键</p>
+          <div class="img-gallery">
+            <img src="images/image5.png" alt="SQL入口" onclick="openLightbox(this.src)">
+            <img src="images/image6.png" alt="SQL操作" onclick="openLightbox(this.src)">
+            <img src="images/image7.png" alt="SQL操作" onclick="openLightbox(this.src)">
+          </div>
+
+          <h4>1. 查询是否为低端机</h4>
+          <p>低端机用户在语聊房会看不到 emoji。在 SQL 中输入用户 uid 及对应时间，运行后如果 <code>device_level</code> 显示为 0，则该用户是低端机。</p>
+          <div class="code-block">SELECT  uid, slogtime, to_char(FROM_UNIXTIME(cast(logtime/1000 as bigint)),'yyyy-mm-dd hh:mi:ss') as logtime_text, action, ori_log['device_level'] as device_level, ori_log['mod'] as ori_mod, ori_log['brd'] as ori_brd, pkg
+FROM    dwd_dating_action_1d
+WHERE   dt &gt;= '20260620'
+AND action == 'splash_start'
+AND uid == '522171494'
+LIMIT 20</div>
+
+          <h4>2. 查询 OMS 上查询不到的订单</h4>
+          <p>OMS 会隐藏距离当前比较久远的订单。通过以下 SQL 查询第三方订单数据。</p>
+          <div class="code-block">SELECT 
+	uid, 
+	p_tm, 
+	m_order_id, 
+	p_order_id, 
+	pay_order_id, 
+	product_name, order_type, 
+	IF(unit != 'INR', pay_amount_before, pay_amount) AS pay_amount, 
+	unit, 
+	IF(pay_status = 2, 'success', 'failed') AS pay_status,
+CASE
+    WHEN pay_type = 'apple' THEN 'Apple'
+    WHEN pay_type = 'google_play' THEN 'Google'
+    ELSE
+        CASE 
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "2" THEN 'QuarkPay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "3" THEN 'MiddlePay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "4" THEN 'QuarkPay-Dear'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "5" THEN 'QuarkPay-Livpay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "6" THEN 'MiddlePay-Dpay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "7" THEN 'QuarkPay-MoneyInvite'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "8" THEN 'QuarkPay-LivepaySafe'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "11" THEN 'QuarkPay-QoneNew'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "12" THEN 'MiddlePay-TimiPay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "13" THEN 'QuarkPay-Foster'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "14" THEN 'QuarkPay-GooglePay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "15" THEN 'QuarkPay-Deep'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "16" THEN 'QuarkPay-IPay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "17" THEN 'MiddlePay-CPay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "18" THEN 'MiddlePay-Unpay'
+            WHEN GET_JSON_OBJECT(ext, '$.server_pay') = "19" THEN 'MiddlePay-Dddpay'
+        END
+END AS "pay_channel"
+FROM dwd_dating_total_user_pay_detail_1d WHERE dt  &gt;= '${dt_begin}' AND dt &lt;= '${dt_end}' AND uid = '${uid}'</div>
+
+          <h4>3. 流水查询</h4>
+          <p>查询用户在游戏、充值、礼物、蓝钻等方面的详细流水数据。替换 <code>${sdt}</code> 和 <code>${edt}</code> 为起止时间。</p>
+          <div class="code-block">SELECT  dt
+        ,game_id
+        ,t1.uid
+        ,SUM(bet_amount) AS bet_amount
+        ,SUM(reward_amount) AS reward_amount
+        ,SUM(specie_rupee) AS specie_rupee
+        ,CAST(SUM(specie_rupee) * 1000 AS BIGINT) AS specie_num
+        ,SUM(specie_diamonds) AS specie_diamonds
+        ,SUM(bet_pv) AS bet_pv
+        ,SUM(reward_pv) AS reward_pv
+        ,SUM(get_specie_rupee) AS get_specie_rupee
+        ,SUM(get_specie_diamonds) AS get_specie_diamonds
+FROM    (
+            SELECT  DISTINCT uid
+            FROM    (
+                        SELECT  '966762719' AS uids
+                    ) 
+            LATERAL VIEW EXPLODE(SPLIT(uids,',')) t AS uid
+        ) t1
+JOIN    (
+            SELECT  dt
+                    ,CAST(uid AS STRING) AS uid
+                    ,'蓝钻兑换' AS game_id
+                    ,SUM(amount) AS bet_amount
+                    ,0 AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_hiiu_wallet_transaction_1h
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     currency_type = '14'
+            AND     business_type IN ('exchange')
+            AND     type = '2'
+            GROUP BY dt
+                     ,uid
+            UNION ALL
+            SELECT  dt
+                    ,CAST(uid AS STRING) AS uid
+                    ,'蓝钻下发' AS game_id
+                    ,0 AS bet_amount
+                    ,SUM(amount) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_hiiu_wallet_transaction_1h
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     currency_type = '14'
+            AND     business_type IN ('grant_blue_diamond')
+            AND     type = '3'
+            GROUP BY dt
+                     ,uid
+            UNION ALL
+            SELECT  t1.dt
+                    ,t1.anchor_id AS uid
+                    ,game_id
+                    ,0 AS bet_amount
+                    ,0 AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,SUM(IF(change_type = 'bet' AND specie_status = 1,specie / cash_specie_rate,0)) AS get_specie_rupee
+                    ,SUM(
+                        CASE    WHEN change_type = 'bet' AND specie_status = 1 THEN IF(cash_specie_rate = 1000,specie / 25,specie / 2.5)
+                                WHEN specie_currency = '10' THEN specie
+                        END
+                    ) AS get_specie_diamonds
+            FROM    (
+                        SELECT  dt
+                                ,game_id
+                                ,change_type
+                                ,amount
+                                ,specie_status
+                                ,specie
+                                ,anchor_id
+                                ,specie_currency
+                        FROM    dwd_dating_game_order_1d
+                        WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+                        AND     COALESCE(is_blue_diamond,0) &lt;&gt; 1 -- 过滤蓝钻的
+                        UNION ALL
+                        SELECT  dt
+                                ,CASE   WHEN INSTR(transaction_id,'live_super_lucky') &gt; 0 THEN 'live_super_lucky_gift'
+                                        WHEN INSTR(transaction_id,'live_share_lucky') &gt; 0 THEN 'live_share_lucky_gift'
+                                        WHEN INSTR(transaction_id,'live_lucky') &gt; 0 THEN 'live_lucky_gift'
+                                END AS game_id
+                                ,'bet' AS change_type
+                                ,0 AS amount
+                                ,1 AS specie_status
+                                ,amount AS specie
+                                ,uid AS anchor_id
+                                ,'11' AS specie_currency
+                        FROM    hiiu_specie_other
+                        WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+                        AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') = dt
+                        AND     type IN ('received_gift')
+                        AND     (
+                                    INSTR(transaction_id,'live_lucky') &gt; 0
+                                    OR      INSTR(transaction_id,'live_share_lucky') &gt; 0
+                                    OR      INSTR(transaction_id,'live_super_lucky') &gt; 0
+                        )
+                    ) t1
+            LEFT JOIN   (
+                            SELECT  dt
+                                    ,uid
+                                    ,cash_specie_rate
+                            FROM    dwd_user_hiiu_sd_1h
+                            WHERE   dt = '${edt}'
+                            AND     hr = '23'
+                        ) t2
+            ON      t1.anchor_id = t2.uid
+            GROUP BY t1.dt
+                     ,game_id
+                     ,t1.anchor_id
+            UNION ALL
+            SELECT  t1.dt
+                    ,t1.uid
+                    ,game_id
+                    ,SUM(IF(change_type = 'bet',amount,0)) AS bet_amount
+                    ,SUM(IF(change_type = 'reward',amount,0)) AS reward_amount
+                    ,SUM(IF(change_type = 'bet' AND specie_status = 1,specie / cash_specie_rate,0)) AS specie_rupee
+                    ,SUM(
+                        CASE    WHEN change_type = 'bet' AND specie_status = 1 THEN IF(cash_specie_rate = 1000,specie / 25,specie / 2.5)
+                                WHEN specie_currency = '10' THEN specie
+                        END
+                    ) AS specie_diamonds
+                    ,SUM(IF(change_type = 'bet' AND amount &gt; 0,1,0)) AS bet_pv
+                    ,SUM(IF(change_type = 'reward' AND amount &gt; 0,1,0)) AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    (
+                        SELECT  dt
+                                ,uid
+                                ,game_id
+                                ,change_type
+                                ,IF(is_blue_diamond = 1,amount / 100,amount) AS amount
+                                ,specie_status
+                                ,specie
+                                ,anchor_id
+                                ,specie_currency
+                        FROM    dwd_dating_game_order_1d
+                        WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+                        UNION ALL
+                        SELECT  dt
+                                ,source_uid AS uid
+                                ,CASE   WHEN INSTR(transaction_id,'live_super_lucky') &gt; 0 THEN 'live_super_lucky_gift'
+                                        WHEN INSTR(transaction_id,'live_share_lucky') &gt; 0 THEN 'live_share_lucky_gift'
+                                        WHEN INSTR(transaction_id,'live_lucky') &gt; 0 THEN 'live_lucky_gift'
+                                END game_id
+                                ,'bet' AS change_type
+                                ,0 AS amount
+                                ,1 AS specie_status
+                                ,amount AS specie
+                                ,uid AS anchor_id
+                                ,'11' AS specie_currency
+                        FROM    hiiu_specie_other
+                        WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+                        AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') = dt
+                        AND     type IN ('received_gift')
+                        AND     (
+                                    INSTR(transaction_id,'live_lucky') &gt; 0
+                                    OR      INSTR(transaction_id,'live_share_lucky') &gt; 0
+                                    OR      INSTR(transaction_id,'live_super_lucky') &gt; 0
+                        )
+                    ) t1
+            LEFT JOIN   (
+                            SELECT  dt
+                                    ,uid
+                                    ,cash_specie_rate
+                            FROM    dwd_user_hiiu_sd_1h
+                            WHERE   dt = '${edt}'
+                            AND     hr = '23'
+                        ) t2
+            ON      t1.anchor_id = t2.uid
+            GROUP BY t1.dt
+                     ,game_id
+                     ,t1.uid
+            UNION ALL
+            SELECT  dt
+                    ,uid
+                    ,IF(gift_type = '1','live_share_lucky_gift','live_lucky_gift') AS game_id
+                    ,SUM(IF(probability_type &lt;&gt; 1,cost,0)) AS bet_amount
+                    ,SUM(IF(probability_type &lt;&gt; 1,coins,0)) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,SUM(IF(probability_type &lt;&gt; 1,COALESCE(gift_cnt,1),0)) AS bet_pv
+                    ,SUM(IF(probability_type &lt;&gt; 1 AND coins &gt; 0,COALESCE(gift_cnt,1),0)) AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    ods_hiiu_lucky_gift_user_log_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') = dt
+            AND     coins &gt;= 0
+            GROUP BY dt
+                     ,IF(gift_type = '1','live_share_lucky_gift','live_lucky_gift')
+                     ,uid
+            UNION ALL
+            SELECT  TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') AS dt
+                    ,uid
+                    ,'live_super_lucky_gift' AS game_id
+                    ,SUM(cost) AS bet_amount
+                    ,SUM(coins) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,SUM(gift_cnt) AS bet_pv
+                    ,SUM(IF(coins &gt; 0,COALESCE(gift_cnt,1),0)) AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    ods_hiiu_super_lucky_gift_user_log_1d
+            WHERE   dt = '${edt}'
+            AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') BETWEEN '${sdt}' AND '${edt}'
+            AND     coins &gt;= 0
+            GROUP BY TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd')
+                     ,uid
+            UNION ALL
+            SELECT  dt
+                    ,uid
+                    ,'收送礼情况' AS game_id
+                    ,SUM(gift_cost_coins) AS bet_amount
+                    ,0 AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_dating_gift_record_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     gift_cost_coins &gt; 0
+            AND     scene NOT IN ('live_share_lucky','live_lucky','live_super_lucky')
+            GROUP BY dt
+                     ,uid
+            UNION ALL
+            SELECT  dt
+                    ,to_uid AS uid
+                    ,'收送礼情况' AS game_id
+                    ,0 AS bet_amount
+                    ,SUM(gift_cost_coins) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_dating_gift_record_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     gift_cost_coins &gt; 0
+            AND     scene NOT IN ('live_share_lucky','live_lucky','live_super_lucky')
+            GROUP BY dt
+                     ,to_uid
+            UNION ALL
+            SELECT  dt
+                    ,uid
+                    ,CASE   WHEN d_order IN ('coins_order','buy_from_reseller') THEN '充值情况'
+                            WHEN d_order = 'VIDEO' THEN '1V1视频情况'
+                    END AS game_id
+                    ,abs(SUM(value_change)) AS bet_amount
+                    ,0 AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,CASE   WHEN d_order = 'coins_order' THEN SUM(CASE    WHEN d_order = 'coins_order' THEN 1 ELSE 0 END)
+                            WHEN d_order = 'VIDEO' THEN COUNT(DISTINCT CASE    WHEN d_order = 'VIDEO' THEN COALESCE(channel_id,scene) ELSE NULL END)
+                            ELSE 0
+                    END AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_dating_coins_detail_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     d_order IN ('VIDEO','coins_order','buy_from_reseller')
+            GROUP BY dt
+                     ,uid
+                     ,d_order
+            UNION ALL
+            SELECT  dt
+                    ,anchor_id AS uid
+                    ,CASE   WHEN type = '_call' THEN '1V1视频情况'
+                            WHEN type IN ('received_gift','wanted_gift_bonus') THEN '收送礼情况'
+                            WHEN type IN ('task_bonus','live_task_bonus','live_pk_task_bonus','activity_award','extra_task_bonus') THEN '活动奖励情况'
+                            WHEN TYPE LIKE 'game_%_bonus' THEN '游戏分成情况'
+                    END AS game_id
+                    ,0 AS bet_amount
+                    ,SUM(specie / cash_specie_rate * 1000) / 25 AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_dating_anchor_speice_detail_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     (
+                        type IN ('_call','received_gift','wanted_gift_bonus','task_bonus','live_task_bonus','live_pk_task_bonus','extra_task_bonus','activity_award')
+                        OR      TYPE LIKE 'game_%_bonus'
+            )
+            GROUP BY dt
+                     ,anchor_id
+                     ,CASE   WHEN type = '_call' THEN '1V1视频情况'
+                             WHEN type IN ('received_gift','wanted_gift_bonus') THEN '收送礼情况'
+                             WHEN type IN ('task_bonus','live_task_bonus','live_pk_task_bonus','activity_award','extra_task_bonus') THEN '活动奖励情况'
+                             WHEN TYPE LIKE 'game_%_bonus' THEN '游戏分成情况'
+                     END
+            UNION ALL
+            SELECT  dt
+                    ,uid
+                    ,CASE   WHEN d_order = 'game_task' THEN '游戏任务'
+                            WHEN d_order IN ('game_rank_reward','game_rank_reward_v2') THEN '游戏榜'
+                            ELSE '活动奖励情况'
+                    END AS game_id
+                    ,0 AS bet_amount
+                    ,SUM(abs(value_change)) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    dwd_dating_coins_detail_1d
+            WHERE   dt BETWEEN '${sdt}' AND '${edt}'
+            AND     d_type IN ('free_income')
+            AND     d_order IN ('daily_task_gift_coins','check_in_gift_coins','game_rank_reward','weekly_user_star_rank','super_win_reward','activity_award','game_rank_reward_v2','game_task')
+            GROUP BY dt
+                     ,uid
+                     ,CASE   WHEN d_order = 'game_task' THEN '游戏任务'
+                             WHEN d_order IN ('game_rank_reward','game_rank_reward_v2') THEN '游戏榜'
+                             ELSE '活动奖励情况'
+                     END
+            UNION ALL
+            SELECT  t1.dt
+                    ,t1.uid
+                    ,'游戏商城兑换' AS game_id
+                    ,0 AS bet_amount
+                    ,SUM(
+                        CASE    WHEN change_type = '宝石' THEN num
+                                WHEN change_type = '蓝钻' THEN num / 100
+                                WHEN change_type = '礼物' THEN num * uni_coins
+                        END
+                    ) AS reward_amount
+                    ,0 AS specie_rupee
+                    ,0 AS specie_diamonds
+                    ,0 AS bet_pv
+                    ,0 AS reward_pv
+                    ,0 AS get_specie_rupee
+                    ,0 AS get_specie_diamonds
+            FROM    (
+                        SELECT  TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') AS dt
+                                ,uid
+                                ,CASE   WHEN name LIKE '宝石%' THEN '宝石'
+                                        WHEN name LIKE '蓝钻%' THEN '蓝钻'
+                                        WHEN name LIKE '礼物%' THEN '礼物'
+                                END AS change_type
+                                ,res_id
+                                ,SUM(
+                                    CASE    WHEN name LIKE '宝石%' THEN SPLIT(name,'宝石')[1]
+                                            WHEN name LIKE '蓝钻%' THEN SPLIT(name,'蓝钻')[1]
+                                            WHEN name LIKE '礼物%' THEN SPLIT(name,'礼物')[1]
+                                    END
+                                ) AS num
+                        FROM    (
+                                    SELECT  CAST(uid AS STRING) AS uid
+                                            ,GET_JSON_OBJECT(pkg_item,'$.details') AS details
+                                            ,GET_JSON_OBJECT(pkg_item,'$.name') AS name
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(GET_JSON_OBJECT(pkg_item,'$.details'),'[',''),']',''),'$.res_type') AS res_type
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(GET_JSON_OBJECT(pkg_item,'$.details'),'[',''),']',''),'$.res_name') AS res_name
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(GET_JSON_OBJECT(pkg_item,'$.details'),'[',''),']',''),'$.res_id') AS res_id
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(GET_JSON_OBJECT(pkg_item,'$.details'),'[',''),']',''),'$.amount') AS amount
+                                            ,ctime
+                                            ,sku_id
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(price_rule,'[',''),']',''),'$.price_rule') AS price_rule
+                                            ,GET_JSON_OBJECT(REPLACE(REPLACE(price_rule,'[',''),']',''),'$.price') AS price
+                                    FROM    ods_dating_mall_exchange_flows_1h
+                                    WHERE   (
+                                                dt = '20251112'
+                                                AND     hr = '08'
+                                                AND     FROM_UNIXTIME(ctime) &lt; '2025-11-12 09:00:00'
+                                    )
+                                    OR      (
+                                                CONCAT(dt,hr) &gt;= '2025111209'
+                                                AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') = dt
+                                                AND     TO_CHAR(FROM_UNIXTIME(ctime),'hh') = hr
+                                    )
+                                ) 
+                        WHERE   TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') &gt;= '${sdt}'
+                        AND     TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd') &lt;= '${edt}'
+                        AND     name RLIKE '宝石|蓝钻|礼物'
+                        GROUP BY TO_CHAR(FROM_UNIXTIME(ctime),'yyyymmdd')
+                                 ,uid
+                                 ,CASE   WHEN name LIKE '宝石%' THEN '宝石'
+                                         WHEN name LIKE '蓝钻%' THEN '蓝钻'
+                                         WHEN name LIKE '礼物%' THEN '礼物'
+                                 END
+                                 ,res_id
+                    ) t1
+            LEFT JOIN   (
+                            SELECT  id
+                                    ,uni_coins
+                            FROM    ods_hiiu_gift_1d
+                            WHERE   dt = MAX_PT('ods_hiiu_gift_1d')
+                        ) t2
+            ON      t1.res_id = t2.id
+            GROUP BY t1.dt
+                     ,t1.uid
+        ) t2
+ON      t1.uid = t2.uid
+GROUP BY dt
+         ,game_id
+         ,t1.uid
+HAVING  (
+            COALESCE(bet_amount,0) + COALESCE(reward_amount,0) + COALESCE(specie_rupee,0) + COALESCE(specie_num,0) + COALESCE(specie_diamonds,0) + COALESCE(bet_pv,0) + COALESCE(reward_pv,0) + COALESCE(get_specie_rupee,0) + COALESCE(get_specie_diamonds,0)
+) &gt; 0
+;</div>
+
+          <h4>4. 四大条件查询 SQL</h4>
+          <div class="code-block"><span class="keyword">SELECT</span> 
+tm, uid, pkg,
+ori_log[<span class="string">'verc'</span>] <span class="keyword">AS</span> verc,
+ori_log[<span class="string">'rel'</span>] <span class="keyword">AS</span> rel,
+ori_log[<span class="string">'cou'</span>] <span class="keyword">AS</span> <span class="string">"四大条件-cou"</span>,
+ori_log[<span class="string">'has_sim_card'</span>] <span class="keyword">AS</span> <span class="string">"四大条件-has_sim_card"</span>,
+ori_log[<span class="string">'is_root'</span>] <span class="keyword">AS</span> <span class="string">"四大条件-is_root"</span>,
+ori_log[<span class="string">'is_vpn'</span>] <span class="keyword">AS</span> <span class="string">"四大条件-is_vpn"</span>,
+ori_log[<span class="string">'pay_apps'</span>] <span class="keyword">AS</span> pay_apps,
+GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="string">'$.pay_methods'</span>) <span class="keyword">AS</span> pay_methods,
+GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="string">'$.reason'</span>) <span class="keyword">AS</span> reason
+<span class="keyword">FROM</span> dwd_dating_summary_action_log_1h 
+<span class="keyword">WHERE</span> uid = <span class="string">'${uid}'</span> <span class="keyword">AND</span> dt >= <span class="string">'${dt}'</span>
+<span class="keyword">AND</span> act=<span class="string">'products_with_paytype'</span>
+<span class="keyword">ORDER BY</span> ctime <span class="keyword">DESC</span></div>
+        </div>  
+      </div>
+    </section>
+
+  <!-- SVIP Messages -->
+    <section id="svip-messages" class="section">
+      <div class="section-header" onclick="toggleSection('svip-messages')">
+        <div class="section-icon icon-green">💬</div>
+        <h2>回复客诉系统消息</h2>
+        <span class="section-badge">SVIP 用户</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <div class="info-box">
+            <strong>操作路径：</strong>OMS 系统 → 客服管理 → 在线客服（群聊）
+          </div>
+          <ul>
+            <li>时间选择最近三天</li>
+            <li>直接筛选未读聊天</li>
+            <li><strong>建议：</strong>窗口常开，打开浏览器通知，上班开启，下班关闭</li>
+          </ul>
+          <div class="img-single">
+            <img src="images/image11.png" alt="在线客服群聊界面" onclick="openLightbox(this.src)">
+          </div>
+       
+      </div>
+    </section>
+
+    <!-- Complaint Reply -->
+    <section id="complaint-reply" class="section">
+      <div class="section-header" onclick="toggleSection('complaint-reply')">
+        <div class="section-icon icon-blue">📩</div>
+        <h2>客诉回复</h2>
+        <span class="section-badge">每天上午</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <h3>操作流程</h3>
+          <div class="info-box">
+            <strong>操作路径：</strong>OMS 系统 → 申诉中心 → 申诉列表
+          </div>
+          <div class="img-gallery">
+            <img src="images/image12.png" alt="申诉中心界面" onclick="openLightbox(this.src)">
+            <img src="images/image13.png" alt="用户反馈界面" onclick="openLightbox(this.src)">
+          </div>
+          <ul>
+            <li>时间选择最近三天，选择普通用户、已挂起的客诉</li>
+            <li>申诉类型选择除了 Recharged not received，根据问题描述回复</li>
+            <li>用户提供付款截图 → 修改分类为 <span class="tag tag-yellow">recharged but not receive</span></li>
+            <li>反馈充值未到账但无截图 → 使用回复模板要求提供截图</li>
+          </ul>
+          <div class="reply-box">
+Dear, please provide us with the screenshots of your rechargement and the pay order id, then our staff will help you check it.
+          </div>
+          <p>回复后，通过所有已回复过的已挂起客诉（可在申诉列表左上角多选，批量审核）。</p>
+          <hr style="border:none;border-top:1px dashed var(--border);margin:16px 0;">
+          <h4>用户反馈处理</h4>
+          <div class="info-box">
+            <strong>操作路径：</strong>OMS 系统 → 用户管理 → 用户反馈
+          </div>
+          <ul>
+            <li>选择时间近一周</li>
+            <li>Tag 选择 Others、Specific Issue（分两次筛选）</li>
+            <li>Reply Status 选择 Not Reply，点击 Reply 回复</li>
+          </ul>
+          <div class="img-single">
+            <img src="images/image14.png" alt="用户反馈处理" onclick="openLightbox(this.src)">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Common Issues -->
+        <section id="common-issues" class="section">
+      <div class="section-header" onclick="toggleSection('common-issues')">
+        <div class="section-icon icon-red">📝</div>
+        <h2>常见问题及对应回复</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card" id="issue-recharge">
+          <h3>1. 用户无法充值</h3>
+          <div class="info-box">
+            <strong>通过 uid 和反馈时间</strong>，在 BI 中查询四大支付条件 sql，通过 reason 的原因回复用户。如果支付条件都正常，让用户确保网络再尝试支付。
+          </div>
+          <h4>四大支付条件</h4>
+          <ul>
+            <li>国家判断（cou）</li>
+            <li>SIM 卡（has_sim_card）</li>
+            <li>VPN（is_vpn）</li>
+            <li>支付 App（pay_apps）</li>
+          </ul>
+          <div class="highlight-box">⚠️ 注意印度需下载对应支付 App；Hiiclub 没有 Gpay 支付方式</div>
+          <div class="img-gallery">
+            <img src="images/image15.png" alt="四大支付条件" onclick="openLightbox(this.src)">
+            <img src="images/image16.png" alt="四大支付条件" onclick="openLightbox(this.src)">
+          </div>
+          <h4>常用国家支付方式</h4>
+          <table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:14px;">
+            <thead><tr style="background:#f1f5f9;"><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">国家</th><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">支付方式</th></tr></thead>
+            <tbody><tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">印度</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Paytm, Phonepe, Gpay</td></tr></tbody>
+          </table>
+          <div class="img-single"><img src="images/image17.png" alt="国家支付方式" onclick="openLightbox(this.src)"></div>
+          <h4>回复模板</h4>
+          <h5>检查网络设置</h5>
+          <div class="reply-box">Hello. sorry for the inconvenience caused to you. Please check whether your internet or wifi functions normally and try it again, Thank you.<br><br>（in India we provide Paytm, Phonebe and Gpay for payment, but you need to download the corresponding payment method app.）</div>
+          <h5>地区特别支付方式</h5>
+          <div class="reply-box">Dear, in *, you can use ** and ** to pay. Please note that you should not use a VPN when paying. If you have any questions, please contact me again. Thank you for your understanding.</div>
+          <h5>没有出现任何问题</h5>
+          <div class="reply-box">Hello, I see that your latest recharge orders are all successful. If you have any further questions, please contact us again. Thank you for your understanding.</div>
+        </div>
+<div class="card" id="issue-account">
+          <h3>2. 帐号换绑 &amp; 账号恢复</h3>
+          <p>用户申诉需要恢复账号或换绑账户信息时，需提供以下信息：</p>
+          <ol>
+            <li>若有被删除账号的支付截图，先核实与支付记录是否相符</li>
+            <li>若没有另一 UID，回复用户先注册新账号（DID 需与旧帐号一致）并提供新 UID</li>
+            <li>若单纯更换换绑方式，核实 DID 或支付截图后，提供信息给 Cathy</li>
+          </ol>
+          <div class="info-box"><strong>DID 查询方式：</strong>用户管理 → 用户列表 → 输入 UID → 查询 → Did</div>
+          <div class="img-single"><img src="images/image18.png" alt="DID查询" onclick="openLightbox(this.src)"></div>
+          <h4>账号换绑</h4>
+          <div class="reply-box">If you wish to change your linked account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
+          <h4>账号恢复</h4>
+          <div class="reply-box">If you wish to reactivate your account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
+        <div class="card" id="issue-call-game">
+          <h3>3. 无法通话 &amp; 游戏问题</h3>
+          <h4>① 用户反馈无法通话</h4>
+          <p>用户钻石被扣 / 使用情况查询路径：</p>
+          <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 用户流水明细 → 输入 uid、时间</div>
+          <div class="img-single"><img src="images/image19.png" alt="用户流水明细" onclick="openLightbox(this.src)"></div>
+          <p>通话最低价格 <strong>1800 钻石/分钟</strong>，余额不足无法拨打。用户申诉则反馈给用户。</p>
+          <h4>② 视频/音频出现问题</h4>
+          <div class="reply-box">Please check the following:<br>1. Are audio and video permissions enabled in your mobile app settings?<br>2. Did you accidentally turn the video switch on/off? Users can currently control the camera.<br>3. If neither of the above applies and the problem persists after your checks, please contact us with a detailed explanation.</div>
+          <h4>③ 反馈挂断电话</h4>
+          <div class="info-box"><strong>操作路径：</strong>内容管理 → 视频通话记录 → 输入 uid、通话时间</div>
+          <div class="img-single"><img src="images/image20.png" alt="视频通话记录" onclick="openLightbox(this.src)"></div>
+          <h4>④ 游戏问题</h4>
+          <p>用户钻石被扣 / 使用情况查询同前。用户表示游戏输得多想补偿，使用 BI SQL 查询。</p>
+          <div class="img-single"><img src="images/image21.png" alt="游戏SQL" onclick="openLightbox(this.src)"></div>
+          <h5>蓝钻发放标准</h5>
+          <div class="highlight-box"><strong>背景：</strong>部分用户输游戏后找客服投诉，发蓝钻安抚用户<br><strong>用户特征：</strong>最近 7 天下注 ≥ 50 万宝石，且总体亏损<br><strong>发放金额：</strong><ul><li>近 15 天未补偿 → 补近 7 天亏损宝石数 × <strong>10%</strong> 的宝石</li><li>近 15 天已补偿 → 补近 7 天亏损宝石数 × <strong>5%</strong> 的宝石</li></ul><strong>注：</strong>蓝钻 : 宝石 = 100 : 1</div>
+          <h5>举例</h5>
+          <p>用户近 15 天第一次来客诉，近 7 天亏损 100 万宝石，则补偿 5 万宝石，对应 500 万蓝钻。</p>
+          <h5>补偿标准不足时安抚</h5>
+          <div class="reply-box">Hello, we are very sorry for the inconvenience. We have checked your gem turnover and it shows that you did indeed lose. Winning and losing are normal. We will increase your chances of winning the game. Thank you for your understanding.</div>
+          <h5>发放蓝钻时的说明</h5>
+          <div class="reply-box">发放蓝钻不是一直都有的（防止用户钻空子），是因为客户是我们的忠实客户，是在我们进行申请之后才能发放的，请客户及时使用，这些蓝钻会在下个月的一号清零。</div>
+        <div class="card" id="issue-behavior">
+          <h3>4. 用户行为问题</h3>
+          <h4>① 主播多账号</h4>
+          <p>用户或工会长反馈一个主播拥有多个账号：</p>
+          <ul>
+            <li>在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及主播的多个 uid</li>
+            <li>同步反馈给用户：正在处理中，核实后封禁其他账号，只保留一个</li>
+          </ul>
+          <div class="img-single"><img src="images/image22.png" alt="主播多账号" onclick="openLightbox(this.src)"></div>
+          <h4>② 用户冲突矛盾</h4>
+          <p>举报私信 abuse 或分享联系方式：</p>
+          <ul><li>在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及相关截图证据</li></ul>
+          <h5>无违规</h5>
+          <div class="reply-box">Dear, sorry that our staff found that this user has not violated any rules. If you have some evidences of them, please provide us with some screenshots or some videos, our staff will figure it out. Thanks for your feedback and supporting.</div>
+          <h5>警告用户</h5>
+          <div class="reply-box">You have been reported and verified for abusing in your user name. （具体违规行为）Please stop your behavior and change it. If this behavior is reported and verified again, we will ban your account.</div>
+        <div class="card" id="issue-topup">
+          <h3>5. 充值未到账（反复反馈 / 在线客服）</h3>
+          <h4>① 核实钻石充值订单</h4>
+          <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择钻石 → 输入 uid 和时间</div>
+          <div class="highlight-box">⏱ 注意将支付截图上的时间转换为印度当地时间后与 OMS 时间对比，OMS 时间会稍慢一点</div>
+          <h4>② 核实 VIP 重复充值</h4>
+          <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择 VIP → 输入 uid 和时间</div>
+          <div class="img-single"><img src="images/image23.png" alt="VIP充值订单" onclick="openLightbox(this.src)"></div>
+          <p>VIP 月卡和周卡重复成功充值不会叠加金额，只会叠加天数。用户可能以为没收到，其实是月卡/周卡还未生效。</p>
+          <div class="reply-box">Dear, you recharged for two VIP monthly cards, but the monthly card only stacks on a daily basis. That means the second monthly card will only become effective after your first monthly card expires. Additionally, both VIP monthly and VIP weekly cards require you to log in to the app daily to claim a portion of the gems. If you forget to log in on a particular day and miss out on claiming them, we cannot provide compensation.</div>
+          <h4>③ 订单 cancel</h4>
+          <p>如果订单状态显示 cancel 而用户反复反馈，将支付截图及 uid 发到 Feedback Issue 群并 <span class="tag tag-yellow">@ankit</span> 查询订单状态。</p>
+        <div class="card" id="issue-live">
+          <h3>6. Live / Party Room 问题</h3>
+          <h4>① 无法观看直播 / 黑屏</h4>
+          <p>让用户提供截图，同时检查网络设置。</p>
+          <div class="reply-box">Hello, we are very sorry for the inconvenience. Please switch to a stable network first, and also attach screenshots or videos showing that you were unable to enter the live room or party room. This will help us resolve the issue as soon as possible. Thank you for your support and understanding.</div>
+          <h4>② 男性用户想直播</h4>
+          <p>目前只有 LV1 以上用户才能看到 Live/Party Room &amp; Game。回复用户：</p>
+          <div class="reply-box">Hello, we are very sorry for the inconvenience. Currently, live streaming permissions are only open to hosts, not to users. We suggest you go to the party room to play. Thank you for your support and understanding.</div>
+        <div class="card" id="issue-guild">
+          <h3>7. 想当工会长或币商</h3>
+          <h4>想当工会长</h4>
+          <div class="reply-box">Thanks for your supporting to our app. If you would like to be an agency leader, please contact our staff on whatsapp：+44 7749 895663, our staff will reply.</div>
+          <h4>想当币商</h4>
+          <div class="reply-box">Thanks for your supporting to our app. If you would like to be a coin seller, please contact our staff on whatsapp：+1 (385) 266-8868, our staff will reply.</div>
+      </div>
+    </section><section id="im-review" class="section">
+      <div class="section-header" onclick="toggleSection('im-review')">
+        <div class="section-icon icon-teal">🔍</div>
+        <h2>用户 IM 审核</h2>
+        <span class="section-badge">重点封禁</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <div class="info-box"><strong>操作路径：</strong>OMS → 内容审核 → 用户 im 违规审核</div>
+          <div class="img-gallery">
+            <img src="images/image24.png" alt="IM审核" onclick="openLightbox(this.src)">
+            <img src="images/image25.png" alt="IM审核" onclick="openLightbox(this.src)">
+          </div>
+          <p>根据敏感词识别违规情形，重点封禁：</p>
+          <ul>
+            <li>工会在公屏抢主播</li>
+            <li>向用户/主播发送垃圾信息（索要或给出联系方式）</li>
+          </ul>
+          <div class="highlight-box">不确定是否需要封禁？截图私信询问 <span class="tag tag-blue">@罗昕雨</span></div>
+        </div>
+        <div class="card">
+          <h3>违规封禁案例</h3>
+          <div class="img-gallery">
+            <img src="images/image26.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image27.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image28.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image29.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image30.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image31.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image32.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image33.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image34.png" alt="封禁案例" onclick="openLightbox(this.src)">
+            <img src="images/image35.png" alt="封禁案例" onclick="openLightbox(this.src)">
+          </div>
+          <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;">
+            <thead><tr style="background:#f1f5f9;"><th style="padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);">情形</th><th style="padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);">处理</th></tr></thead>
+            <tbody>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">展示工资、说来xx能赚钱等工会拉人</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">封禁</span></td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">高等级用户（财富等级 ≥ 6 级）</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);">一般通过，除非明确抢主播</td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">重复引流别的 App，等级低（≤ 3 级）</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">封禁</span></td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">多次重复提到别的 App，等级低</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">封禁</span></td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">未成年红线</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">封禁</span></td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">不明显工会拉人、无意义乱码、疑问、发泄情绪</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-green">通过</span></td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">发送/索要联系方式</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">封禁</span>（财富等级高可警告）</td></tr>
+              <tr><td style="padding:10px 12px;border-bottom:1px solid var(--border);">等级 0 直接发出号码</td><td style="padding:10px 12px;border-bottom:1px solid var(--border);"><span class="tag tag-red">直接封禁</span></td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:12px;font-size:13px;color:var(--text-muted);">* 注：查看既往处理记录可找到更多案例</p>
+          <p style="font-size:13px;color:var(--text-muted);">📖 参考文档：<a href="https://nemo.yuque.com/g/caq9mt/pf481c/fyisu7q7wz38so28/collaborator/join?token=CUz8CLGrytXNd8T2&source=doc_collaborator#" target="_blank" style="color:var(--primary);">《反垃圾策略补充》</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drop Order -->
+    <section id="drop-order" class="section">
+      <div class="section-header" onclick="toggleSection('drop-order')">
+        <div class="section-icon icon-purple">📊</div>
+        <h2>处理支付掉单问题</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <h3>业务背景</h3>
+          <p>业务相关国家接入的支付渠道不稳定，用户充值创单成功后可能面临订单充值失败、被取消、到账延迟等情况，该类订单称为 <strong>"掉单" / "充值不到账订单"</strong>。需跟进掉单情况，提高用户充值成功率。</p>
+          <div class="img-single"><img src="images/image36.png" alt="掉单业务背景" onclick="openLightbox(this.src)"></div>
+        </div>
+        <div class="card">
+          <h3>需要你做的</h3>
+          <p>了解充值不到账订单处理流程（由印度小编 <span class="tag tag-yellow">@ankit</span> 负责掉单收集），将 OMS 每日收到的所有掉单反馈到不同支付渠道，跟进处理结果，提高支付成功率。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drop - Supervise -->
+    <section id="drop-supervise" class="section">
+      <div class="section-header" onclick="toggleSection('drop-supervise')">
+        <div class="section-icon icon-amber">👁️</div>
+        <h2>监督小编每日收集掉单</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <h3>掉单渠道表格</h3>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
+            <span class="tag tag-blue">网盟 - QUARK</span>
+            <span class="tag tag-green">Dpay - DPAY</span>
+            <span class="tag tag-yellow">Beautypay</span>
+            <span class="tag tag-red">Happypay</span>
+            <span class="tag tag-blue">Payermax</span>
+          </div>
+          <h4>每日监督流程</h4>
+          <div class="img-gallery">
+            <img src="images/image37.png" alt="监督小编" onclick="openLightbox(this.src)">
+            <img src="images/image38.png" alt="Feedback Issue群" onclick="openLightbox(this.src)">
+          </div>
+          <ol>
+            <li>印度小编（ankit）每天需将 <strong>3pm 前</strong> 提交到 OMS 的不同渠道掉单收集到对应表格</li>
+            <li>进入 OMS → 申诉中心 → 申诉列表</li>
+            <li>提交时间筛选为 <strong>前一天 3pm 到当天 3pm</strong></li>
+            <li>工单状态选 <strong>"待处理"</strong>，申诉类型选 <strong>"Recharge not received"</strong></li>
+            <li>查看小编是否清空当天掉单列表</li>
+            <li>若仍有工单显示，在 Feedback Issue 群 <span class="tag tag-yellow">@ankit</span> 询问原因</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Drop - Platform -->
+
+    <!-- Quark -->
+    <section id="drop-quark" class="section">
+      <div class="section-header" onclick="toggleSection('drop-quark')">
+        <div class="section-icon icon-blue">⚡</div>
+        <h2>网盟（QUARK）掉单处理流程</h2>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <h3>处理原则</h3>
+          <div class="info-box"><ol><li>先在商户平台上寻找是否有对应订单</li><li>若有 → 反馈在商户平台上</li><li>若无 → 登记于网盟充值问题汇总表</li></ol></div>
+          <h4>商户平台链接</h4>
+          <p><a href="https://quark-pay.com/merchant/dropOrder/dropOrderQuery" target="_blank" style="color:var(--primary);">https://quark-pay.com/merchant/dropOrder/dropOrderQuery</a></p>
+          <div class="img-gallery">
+            <img src="images/image39.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image40.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image41.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image42.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image43.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image44.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+            <img src="images/image45.png" alt="网盟掉单" onclick="openLightbox(this.src)">
+          </div>
+          <h4>操作步骤</h4>
+          <ol>
+            <li>打开 qp 表格，复制待处理掉单的订单号</li>
+            <li>进入网盟商户平台，点击掉单管理 → 掉单查询</li>
+            <li>在"商户订单号"粘贴订单号，点击查询</li>
+            <li>若能查出该笔掉单 → 点击 <strong>"添加至掉单列表"</strong> 进行掉单处理及进度跟踪</li>
+            <li>上传用户支付成功截图（进入掉单列表 → 点击操作栏"上传截图"）</li>
+            <li>最多允许 3 份截图，上传前注意核对信息</li>
+            <li>截图上传后返回 QUARK 表格，在 platform 栏标记 <strong>"1"</strong> 表示已反馈</li>
+          </ol>
+        </div>
+      </div>
+    </section>    <!-- SVIP Messages -->
+    
+
+    <!-- Complaint Reply -->
+    
+
+    <!-- Common Issues -->
+    
+
+<section id="drop-dpay" class="section">
+      <div class="section-header" onclick="toggleSection('drop-dpay')">
+        <div class="section-icon icon-teal">💳</div>
+        <h2>Dpay 掉单处理流程</h2>
+        <span class="section-badge">同 Bbpay / Happypay / 3qp</span>
+        <span class="toggle-icon">▼</span>
+      </div>
+      <div class="section-body">
+        <div class="card">
+          <div class="img-gallery">
+            <img src="images/image46.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
+            <img src="images/image47.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
+            <img src="images/image48.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
+          </div>
+          <ol>
+            <li>打开 DPAY 谷歌表，若有新增掉单，复制到钉钉表</li>
+            <li>通过订单号 Order id 在 OMS 系统 → 财务管理 → 充值订单查询 <strong>pay order id</strong> 和 <strong>p order id</strong>，填入钉钉表，提醒 <span class="tag tag-blue">梦情</span> 处理</li>
+            <li>将订单截图保存到本地，以 pay order id 命名截图</li>
+            <li>按不同调单渠道建立文件夹分类</li>
+            <li>统一以压缩包形式发送给梦情</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--text-muted);">
+      <p>MUSEE 实习生工作交接指南 · 基于原始文档整理</p>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightbox').style.display = 'block';
+  document.getElementById('lightboxImg').src = src;
+}
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// Accordion toggle
+function toggleSection(id) {
+  const section = document.getElementById(id);
+  if (!section) return;
+  const body = section.querySelector('.section-body');
+  const icon = section.querySelector('.toggle-icon');
+  if (!body) return;
+  const isOpen = body.classList.contains('open');
+  // Close all others
+  document.querySelectorAll('.section-body.open').forEach(b => {
+    if (b !== body) {
+      b.classList.remove('open');
+      b.closest('.section').querySelector('.toggle-icon')?.classList.remove('open');
+    }
+  });
+  // Toggle this one
+  if (isOpen) {
+    body.classList.remove('open');
+    icon?.classList.remove('open');
+  } else {
+    body.classList.add('open');
+    icon?.classList.add('open');
+  }
+}
+
+// Auto-open section based on URL hash
+function openFromHash() {
+  const hash = window.location.hash.replace('#', '');
+  if (hash) {
+    const section = document.getElementById(hash);
+    if (section && section.classList.contains('section')) {
+      const body = section.querySelector('.section-body');
+      const icon = section.querySelector('.toggle-icon');
+      if (body) {
+        body.classList.add('open');
+        if (icon) icon.classList.add('open');
+      }
+    }
+  }
+}
+
+// Scroll to section and open it
+function scrollToSection(id) {
+  // Close mobile sidebar
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  
+  // Open the section
+  const section = document.getElementById(id);
+  if (section) {
+    if (section.classList.contains('section')) {
+      const body = section.querySelector('.section-body');
+      const icon = section.querySelector('.toggle-icon');
+      if (body && !body.classList.contains('open')) {
+        // Close others
+        document.querySelectorAll('.section-body.open').forEach(b => {
+          b.classList.remove('open');
+          b.closest('.section').querySelector('.toggle-icon')?.classList.remove('open');
+        });
+        body.classList.add('open');
+        if (icon) icon.classList.add('open');
+      }
+    }
+    // Scroll
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+
+// Sidebar active state
+const navItems = document.querySelectorAll('.sidebar .nav-item');
+
+function updateActiveNav() {
+  let current = '';
+  const sections = document.querySelectorAll('.section[id]');
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top <= 150) {
+      current = section.id;
+    }
+  });
+
+  navItems.forEach(item => {
+    item.classList.remove('active');
+    // sidebar items use onclick instead of href now
+    const onclick = item.getAttribute('onclick') || '';
+    const match = onclick.match(/scrollToSection\('([^']+)'\)/);
+    if (match && match[1] === current) {
+      item.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', updateActiveNav);
+window.addEventListener('load', () => {
+  updateActiveNav();
+  openFromHash();
+});
+
+// Mobile nav toggle
+const navToggle = document.getElementById('navToggle');
+const sidebar = document.getElementById('sidebar');
+
+navToggle.addEventListener('click', () => {
+  sidebar.classList.toggle('mobile-open');
+});
+</script>
+</body>
+</html>

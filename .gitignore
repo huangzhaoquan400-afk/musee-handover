@@ -1,0 +1,17 @@
+﻿*.pyc
+__pycache__/
+*.py
+_tmp_*
+_tmp*
+add_*.py
+check_*.py
+cleanup_rest.py
+debug_*.py
+find_*.py
+fix_*.py
+list_sections.py
+read_sqls.py
+remove_*.py
+trace_*.py
+update_*.py
+verify_*.py
