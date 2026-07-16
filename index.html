@@ -440,14 +440,8 @@ body {
 }
 
 
-.edit-btn {
-  display: none;
-  font-size: 13px; color: #6366f1;
-  cursor: pointer; padding: 2px 10px; border-radius: 4px;
-  border: 1px solid #6366f1; margin-left: 8px;
-  white-space: nowrap; user-select: none;
-}
-.edit-btn:hover { background: #eef2ff; }
+
+
 /* Admin mode */
 .admin-toggle {
   background: none; border: 1px solid var(--border);
@@ -484,14 +478,9 @@ body {
 .admin-bar .status.error { color: #dc2626; }
 .admin-bar .status.success { color: #16a34a; }
 
-.edit-btn {
-  display: none;
-  float: right; font-size: 13px; color: var(--primary);
-  cursor: pointer; padding: 2px 8px; border-radius: 4px;
-  border: 1px solid transparent;
-}
-.edit-btn:hover { background: #eef2ff; border-color: var(--primary); }
-.editing .edit-btn { border-color: var(--primary); background: #eef2ff; }
+
+
+.editing 
 
 .editable-text {
   outline: none;
@@ -522,7 +511,7 @@ body {
 
 .editable.editing:focus { outline: 2px solid #6366f1; background: #fff; }
 
-.img-edit-btn:hover { background: #4f46e5 !important; }
+
 
 .editable.editing:hover { background: #f8fafc; }
 .editable.editing:focus { outline: 2px solid #6366f1; background: #fff; }
@@ -604,7 +593,6 @@ body {
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('daily-flow')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-1">
-          <span class="edit-btn" onclick="editCard('card-auto-1')">✏️ 编辑</span>
           
           <p class="editable">每日工作主线流程如下：</p>
           <ol class="step-list editable">
@@ -635,7 +623,6 @@ body {
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('permissions')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-2">
-          <span class="edit-btn" onclick="editCard('card-auto-2')">✏️ 编辑</span>
           
           <h3 class="editable">① OMS 后台权限申请</h3>
           <p class="editable">钉钉工作台 → OA审批 → 办公权限申请</p>
@@ -644,22 +631,20 @@ body {
             <strong>业务负责人：</strong>大侠 &nbsp;|&nbsp; <strong>抄送人：</strong>梦情 &amp; 健华
           </div>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image1.png" alt="OMS权限申请" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image2.png" alt="OMS权限设置" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image3.png" alt="OMS权限类型" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image1.png" alt="OMS权限申请" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image2.png" alt="OMS权限设置" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image3.png" alt="OMS权限类型" onclick="openLightbox(this.src)"></span>
           </div>
         </div>
         <div class="card" id="card-auto-3">
-          <span class="edit-btn" onclick="editCard('card-auto-3')">✏️ 编辑</span>
           
           <h3 class="editable">② BI 报表权限申请</h3>
           <p class="editable">钉钉工作台 → OA审批 → 办公权限申请</p>
           <div class="img-single">
-            <span style="position:relative;display:inline-block;"><img src="images/image4.png" alt="BI报表权限" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image4.png" alt="BI报表权限" onclick="openLightbox(this.src)"></span>
           </div>
         </div>
         <div class="card" id="card-auto-4">
-          <span class="edit-btn" onclick="editCard('card-auto-4')">✏️ 编辑</span>
           
           <h3 class="editable">③ 网络连接</h3>
           <p class="editable">公司网络为隐藏网络，部门网络信息如下：</p>
@@ -669,14 +654,13 @@ body {
           </div>
         </div>
                 <div class="card" id="card-auto-5">
-          <span class="edit-btn" onclick="editCard('card-auto-5')">✏️ 编辑</span>
           
           <h3 class="editable">④ SQL 汇总</h3>
           <p class="editable"><strong>BI 入口：</strong>自助分析 → 右键新建节点 → 粘贴 SQL → 按保存键</p>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image5.png" alt="SQL入口" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image6.png" alt="SQL操作" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image7.png" alt="SQL操作" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image5.png" alt="SQL入口" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image6.png" alt="SQL操作" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image7.png" alt="SQL操作" onclick="openLightbox(this.src)"></span>
           </div>
 
           <h4 class="editable">1. 查询是否为低端机</h4>
@@ -1174,7 +1158,6 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('svip-messages')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-6">
-          <span class="edit-btn" onclick="editCard('card-auto-6')">✏️ 编辑</span>
           
           <div class="editable info-box">
             <strong>操作路径：</strong>OMS 系统 → 客服管理 → 在线客服（群聊）
@@ -1185,7 +1168,7 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
             <li class="editable"><strong>建议：</strong>窗口常开，打开浏览器通知，上班开启，下班关闭</li>
           </ul>
           <div class="img-single">
-            <span style="position:relative;display:inline-block;"><img src="images/image11.png" alt="在线客服群聊界面" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image11.png" alt="在线客服群聊界面" onclick="openLightbox(this.src)"></span>
           </div>
        
       </div>
@@ -1201,15 +1184,14 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('complaint-reply')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-7">
-          <span class="edit-btn" onclick="editCard('card-auto-7')">✏️ 编辑</span>
           
           <h3 class="editable">操作流程</h3>
           <div class="editable info-box">
             <strong>操作路径：</strong>OMS 系统 → 申诉中心 → 申诉列表
           </div>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image12.png" alt="申诉中心界面" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image13.png" alt="用户反馈界面" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image12.png" alt="申诉中心界面" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image13.png" alt="用户反馈界面" onclick="openLightbox(this.src)"></span>
           </div>
           <ul>
             <li class="editable">时间选择最近三天，选择普通用户、已挂起的客诉</li>
@@ -1232,7 +1214,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <li class="editable">Reply Status 选择 Not Reply，点击 Reply 回复</li>
           </ul>
           <div class="img-single">
-            <span style="position:relative;display:inline-block;"><img src="images/image14.png" alt="用户反馈处理" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image14.png" alt="用户反馈处理" onclick="openLightbox(this.src)"></span>
           </div>
         </div>
       </div>
@@ -1247,7 +1229,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('common-issues')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="issue-recharge">
-          <span class="edit-btn" onclick="editCard('issue-recharge')">✏️ 编辑</span>
           
           <h3 class="editable">1. 用户无法充值</h3>
           <div class="editable info-box">
@@ -1262,15 +1243,15 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           </ul>
           <div class="editable highlight-box">⚠️ 注意印度需下载对应支付 App；Hiiclub 没有 Gpay 支付方式</div>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image15.png" alt="四大支付条件" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image16.png" alt="四大支付条件" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image15.png" alt="四大支付条件" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image16.png" alt="四大支付条件" onclick="openLightbox(this.src)"></span>
           </div>
           <h4 class="editable">常用国家支付方式</h4>
           <table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:14px;">
             <thead><tr style="background:#f1f5f9;"><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">国家</th><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">支付方式</th></tr></thead>
             <tbody><tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">印度</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Paytm, Phonepe, Gpay</td></tr></tbody>
           </table>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image17.png" alt="国家支付方式" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image17.png" alt="国家支付方式" onclick="openLightbox(this.src)"></span></div>
           <h4 class="editable">回复模板</h4>
           <h5 class="editable">检查网络设置</h5>
           <div class="editable reply-box">Hello. sorry for the inconvenience caused to you. Please check whether your internet or wifi functions normally and try it again, Thank you.<br><br>（in India we provide Paytm, Phonebe and Gpay for payment, but you need to download the corresponding payment method app.）</div>
@@ -1280,7 +1261,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <div class="editable reply-box">Hello, I see that your latest recharge orders are all successful. If you have any further questions, please contact us again. Thank you for your understanding.</div>
         </div>
 <div class="card" id="issue-account">
-          <span class="edit-btn" onclick="editCard('issue-account')">✏️ 编辑</span>
           
           <h3 class="editable">2. 帐号换绑 &amp; 账号恢复</h3>
           <p class="editable">用户申诉需要恢复账号或换绑账户信息时，需提供以下信息：</p>
@@ -1290,28 +1270,27 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <li class="editable">若单纯更换换绑方式，核实 DID 或支付截图后，提供信息给 Cathy</li>
           </ol>
           <div class="editable info-box"><strong>DID 查询方式：</strong>用户管理 → 用户列表 → 输入 UID → 查询 → Did</div>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image18.png" alt="DID查询" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image18.png" alt="DID查询" onclick="openLightbox(this.src)"></span></div>
           <h4 class="editable">账号换绑</h4>
           <div class="editable reply-box">If you wish to change your linked account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
           <h4 class="editable">账号恢复</h4>
           <div class="editable reply-box">If you wish to reactivate your account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
         <div class="card" id="issue-call-game">
-          <span class="edit-btn" onclick="editCard('issue-call-game')">✏️ 编辑</span>
           
           <h3 class="editable">3. 无法通话 &amp; 游戏问题</h3>
           <h4 class="editable">① 用户反馈无法通话</h4>
           <p class="editable">用户钻石被扣 / 使用情况查询路径：</p>
           <div class="editable info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 用户流水明细 → 输入 uid、时间</div>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image19.png" alt="用户流水明细" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image19.png" alt="用户流水明细" onclick="openLightbox(this.src)"></span></div>
           <p class="editable">通话最低价格 <strong>1800 钻石/分钟</strong>，余额不足无法拨打。用户申诉则反馈给用户。</p>
           <h4 class="editable">② 视频/音频出现问题</h4>
           <div class="editable reply-box">Please check the following:<br>1. Are audio and video permissions enabled in your mobile app settings?<br>2. Did you accidentally turn the video switch on/off? Users can currently control the camera.<br>3. If neither of the above applies and the problem persists after your checks, please contact us with a detailed explanation.</div>
           <h4 class="editable">③ 反馈挂断电话</h4>
           <div class="editable info-box"><strong>操作路径：</strong>内容管理 → 视频通话记录 → 输入 uid、通话时间</div>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image20.png" alt="视频通话记录" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image20.png" alt="视频通话记录" onclick="openLightbox(this.src)"></span></div>
           <h4 class="editable">④ 游戏问题</h4>
           <p class="editable">用户钻石被扣 / 使用情况查询同前。用户表示游戏输得多想补偿，使用 BI SQL 查询。</p>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image21.png" alt="游戏SQL" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image21.png" alt="游戏SQL" onclick="openLightbox(this.src)"></span></div>
           <h5 class="editable">蓝钻发放标准</h5>
           <div class="editable highlight-box"><strong>背景：</strong>部分用户输游戏后找客服投诉，发蓝钻安抚用户<br><strong>用户特征：</strong>最近 7 天下注 ≥ 50 万宝石，且总体亏损<br><strong>发放金额：</strong><ul><li class="editable">近 15 天未补偿 → 补近 7 天亏损宝石数 × <strong>10%</strong> 的宝石</li><li class="editable">近 15 天已补偿 → 补近 7 天亏损宝石数 × <strong>5%</strong> 的宝石</li></ul><strong>注：</strong>蓝钻 : 宝石 = 100 : 1</div>
           <h5 class="editable">举例</h5>
@@ -1321,7 +1300,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h5 class="editable">发放蓝钻时的说明</h5>
           <div class="editable reply-box">发放蓝钻不是一直都有的（防止用户钻空子），是因为客户是我们的忠实客户，是在我们进行申请之后才能发放的，请客户及时使用，这些蓝钻会在下个月的一号清零。</div>
         <div class="card" id="issue-behavior">
-          <span class="edit-btn" onclick="editCard('issue-behavior')">✏️ 编辑</span>
           
           <h3 class="editable">4. 用户行为问题</h3>
           <h4 class="editable">① 主播多账号</h4>
@@ -1330,7 +1308,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <li class="editable">在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及主播的多个 uid</li>
             <li class="editable">同步反馈给用户：正在处理中，核实后封禁其他账号，只保留一个</li>
           </ul>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image22.png" alt="主播多账号" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image22.png" alt="主播多账号" onclick="openLightbox(this.src)"></span></div>
           <h4 class="editable">② 用户冲突矛盾</h4>
           <p class="editable">举报私信 abuse 或分享联系方式：</p>
           <ul><li class="editable">在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及相关截图证据</li></ul>
@@ -1339,7 +1317,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <h5 class="editable">警告用户</h5>
           <div class="editable reply-box">You have been reported and verified for abusing in your user name. （具体违规行为）Please stop your behavior and change it. If this behavior is reported and verified again, we will ban your account.</div>
         <div class="card" id="issue-topup">
-          <span class="edit-btn" onclick="editCard('issue-topup')">✏️ 编辑</span>
           
           <h3 class="editable">5. 充值未到账（反复反馈 / 在线客服）</h3>
           <h4 class="editable">① 核实钻石充值订单</h4>
@@ -1347,13 +1324,12 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <div class="editable highlight-box">⏱ 注意将支付截图上的时间转换为印度当地时间后与 OMS 时间对比，OMS 时间会稍慢一点</div>
           <h4 class="editable">② 核实 VIP 重复充值</h4>
           <div class="editable info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择 VIP → 输入 uid 和时间</div>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image23.png" alt="VIP充值订单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image23.png" alt="VIP充值订单" onclick="openLightbox(this.src)"></span></div>
           <p class="editable">VIP 月卡和周卡重复成功充值不会叠加金额，只会叠加天数。用户可能以为没收到，其实是月卡/周卡还未生效。</p>
           <div class="editable reply-box">Dear, you recharged for two VIP monthly cards, but the monthly card only stacks on a daily basis. That means the second monthly card will only become effective after your first monthly card expires. Additionally, both VIP monthly and VIP weekly cards require you to log in to the app daily to claim a portion of the gems. If you forget to log in on a particular day and miss out on claiming them, we cannot provide compensation.</div>
           <h4 class="editable">③ 订单 cancel</h4>
           <p class="editable">如果订单状态显示 cancel 而用户反复反馈，将支付截图及 uid 发到 Feedback Issue 群并 <span class="tag tag-yellow">@ankit</span> 查询订单状态。</p>
         <div class="card" id="issue-live">
-          <span class="edit-btn" onclick="editCard('issue-live')">✏️ 编辑</span>
           
           <h3 class="editable">6. Live / Party Room 问题</h3>
           <h4 class="editable">① 无法观看直播 / 黑屏</h4>
@@ -1363,7 +1339,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <p class="editable">目前只有 LV1 以上用户才能看到 Live/Party Room &amp; Game。回复用户：</p>
           <div class="editable reply-box">Hello, we are very sorry for the inconvenience. Currently, live streaming permissions are only open to hosts, not to users. We suggest you go to the party room to play. Thank you for your support and understanding.</div>
         <div class="card" id="issue-guild">
-          <span class="edit-btn" onclick="editCard('issue-guild')">✏️ 编辑</span>
           
           <h3 class="editable">7. 想当工会长或币商</h3>
           <h4 class="editable">想当工会长</h4>
@@ -1380,12 +1355,11 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('im-review')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-8">
-          <span class="edit-btn" onclick="editCard('card-auto-8')">✏️ 编辑</span>
           
           <div class="editable info-box"><strong>操作路径：</strong>OMS → 内容审核 → 用户 im 违规审核</div>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image24.png" alt="IM审核" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image25.png" alt="IM审核" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image24.png" alt="IM审核" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image25.png" alt="IM审核" onclick="openLightbox(this.src)"></span>
           </div>
           <p class="editable">根据敏感词识别违规情形，重点封禁：</p>
           <ul>
@@ -1395,20 +1369,19 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           <div class="editable highlight-box">不确定是否需要封禁？截图私信询问 <span class="tag tag-blue">@罗昕雨</span></div>
         </div>
         <div class="card" id="card-auto-9">
-          <span class="edit-btn" onclick="editCard('card-auto-9')">✏️ 编辑</span>
           
           <h3 class="editable">违规封禁案例</h3>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image26.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image27.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image28.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image29.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image30.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image31.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image32.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image33.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image34.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image35.png" alt="封禁案例" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image26.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image27.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image28.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image29.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image30.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image31.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image32.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image33.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image34.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image35.png" alt="封禁案例" onclick="openLightbox(this.src)"></span>
           </div>
           <table style="width:100%;border-collapse:collapse;font-size:14px;margin-top:12px;">
             <thead><tr style="background:#f1f5f9;"><th style="padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);">情形</th><th style="padding:10px 12px;text-align:left;border-bottom:2px solid var(--border);">处理</th></tr></thead>
@@ -1438,14 +1411,12 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('drop-order')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-10">
-          <span class="edit-btn" onclick="editCard('card-auto-10')">✏️ 编辑</span>
           
           <h3 class="editable">业务背景</h3>
           <p class="editable">业务相关国家接入的支付渠道不稳定，用户充值创单成功后可能面临订单充值失败、被取消、到账延迟等情况，该类订单称为 <strong>"掉单" / "充值不到账订单"</strong>。需跟进掉单情况，提高用户充值成功率。</p>
-          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image36.png" alt="掉单业务背景" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span></div>
+          <div class="img-single"><span style="position:relative;display:inline-block;"><img src="images/image36.png" alt="掉单业务背景" onclick="openLightbox(this.src)"></span></div>
         </div>
         <div class="card" id="card-auto-11">
-          <span class="edit-btn" onclick="editCard('card-auto-11')">✏️ 编辑</span>
           
           <h3 class="editable">需要你做的</h3>
           <p class="editable">了解充值不到账订单处理流程（由印度小编 <span class="tag tag-yellow">@ankit</span> 负责掉单收集），将 OMS 每日收到的所有掉单反馈到不同支付渠道，跟进处理结果，提高支付成功率。</p>
@@ -1462,7 +1433,6 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('drop-supervise')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-12">
-          <span class="edit-btn" onclick="editCard('card-auto-12')">✏️ 编辑</span>
           
           <h3 class="editable">掉单渠道表格</h3>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
@@ -1474,8 +1444,8 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
           </div>
           <h4 class="editable">每日监督流程</h4>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image37.png" alt="监督小编" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image38.png" alt="Feedback Issue群" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image37.png" alt="监督小编" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image38.png" alt="Feedback Issue群" onclick="openLightbox(this.src)"></span>
           </div>
           <ol>
             <li class="editable">印度小编（ankit）每天需将 <strong>3pm 前</strong> 提交到 OMS 的不同渠道掉单收集到对应表格</li>
@@ -1500,20 +1470,19 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('drop-quark')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-13">
-          <span class="edit-btn" onclick="editCard('card-auto-13')">✏️ 编辑</span>
           
           <h3 class="editable">处理原则</h3>
           <div class="editable info-box"><ol><li class="editable">先在商户平台上寻找是否有对应订单</li><li class="editable">若有 → 反馈在商户平台上</li><li class="editable">若无 → 登记于网盟充值问题汇总表</li></ol></div>
           <h4 class="editable">商户平台链接</h4>
           <p class="editable"><a href="https://quark-pay.com/merchant/dropOrder/dropOrderQuery" target="_blank" style="color:var(--primary);">https://quark-pay.com/merchant/dropOrder/dropOrderQuery</a></p>
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image39.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image40.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image41.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image42.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image43.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image44.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image45.png" alt="网盟掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image39.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image40.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image41.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image42.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image43.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image44.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image45.png" alt="网盟掉单" onclick="openLightbox(this.src)"></span>
           </div>
           <h4 class="editable">操作步骤</h4>
           <ol>
@@ -1545,12 +1514,11 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
       </div>
       <div class="section-body"><button class="add-card-btn" onclick="addCard('drop-dpay')" style="display:none;width:100%;padding:12px 0;margin:0 0 12px 0;border:2px dashed #cbd5e1;border-radius:8px;background:transparent;cursor:pointer;font-size:14px;color:#94a3b8;">+ Add New Content</button>\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-14">
-          <span class="edit-btn" onclick="editCard('card-auto-14')">✏️ 编辑</span>
           
           <div class="img-gallery">
-            <span style="position:relative;display:inline-block;"><img src="images/image46.png" alt="Dpay掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image47.png" alt="Dpay掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
-            <span style="position:relative;display:inline-block;"><img src="images/image48.png" alt="Dpay掉单" onclick="openLightbox(this.src)"<span class="img-edit-btn" onclick="replaceImage(this.previousElementSibling)" style="display:none;position:absolute;top:4px;right:4px;background:#6366f1;color:#fff;font-size:11px;padding:2px 8px;border-radius:4px;cursor:pointer;z-index:10;">✏️</span>></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image46.png" alt="Dpay掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image47.png" alt="Dpay掉单" onclick="openLightbox(this.src)"></span>
+            <span style="position:relative;display:inline-block;"><img src="images/image48.png" alt="Dpay掉单" onclick="openLightbox(this.src)"></span>
           </div>
           <ol>
             <li class="editable">打开 DPAY 谷歌表，若有新增掉单，复制到钉钉表</li>
@@ -1713,7 +1681,7 @@ function toggleAdmin(){
   e.textContent = adminMode ? '[Exit Edit]' : '[Edit]';
   b.classList.toggle('show');
   document.querySelectorAll('.editable').forEach(function(el){el.contentEditable = adminMode; el.classList.toggle('editing',adminMode);});
-  document.querySelectorAll('.edit-hint,.add-card-btn,.img-edit-btn').forEach(function(el){el.style.display = adminMode ? '' : 'none';});
+  document.querySelectorAll('.edit-hint,.add-card-btn,);
   if(adminMode){var s=sessionStorage.getItem(TK);if(s)document.getElementById('tokenInput').value=s;}
 }
 function addCard(sid){
