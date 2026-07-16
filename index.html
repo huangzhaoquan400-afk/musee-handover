@@ -523,10 +523,15 @@ body {
 .editable.editing:focus { outline: 2px solid #6366f1; background: #fff; }
 
 .img-edit-btn:hover { background: #4f46e5 !important; }
-.editable.editing { outline: 2px dashed #818cf8; outline-offset: 2px; border-radius: 4px; padding: 1px 4px; cursor: text; }
+
 .editable.editing:hover { background: #f8fafc; }
 .editable.editing:focus { outline: 2px solid #6366f1; background: #fff; }
-.add-card-btn:hover { border-color: #6366f1 !important; color: #6366f1 !important; background: #eef2ff !important; }
+
+
+.editable.editing{outline:2px dashed #818cf8;border-radius:4px;padding:1px 4px;cursor:text;}
+.editable.editing:focus{outline:2px solid #6366f1;}
+.add-card-btn{display:none;}
+.add-card-btn:hover{border-color:#6366f1!important;color:#6366f1!important;background:#eef2ff!important;}
 </style>
 </head>
 <body>
@@ -1697,162 +1702,81 @@ navToggle.addEventListener('click', () => {
 <!-- Back to top -->
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<script>﻿var adminMode = false;
-var TOKEN_KEY = "gh_token_musee";
-
-function toggleAdmin() {
+<script>
+var adminMode = false;
+var TK = 'gh_token_musee';
+function toggleAdmin(){
   adminMode = !adminMode;
-  var btn = document.getElementById("adminToggle");
-  var bar = document.getElementById("adminBar");
-  btn.classList.toggle("active");
-  btn.textContent = adminMode ? "\uD83D\uDD13 \u9000\u51FA\u7F16\u8F91" : "\uD83D\uDD12 \u7F16\u8F91";
-  bar.classList.toggle("show");
-  
-  document.querySelectorAll(".editable").forEach(function(el) {
-    el.contentEditable = adminMode;
-    el.classList.toggle("editing", adminMode);
-  });
-  
-  document.querySelectorAll(".edit-hint").forEach(function(el) {
-    el.style.display = adminMode ? "block" : "none";
-  });
-  document.querySelectorAll(".add-card-btn").forEach(function(el) {
-    el.style.display = adminMode ? "block" : "none";
-  });
-  document.querySelectorAll(".img-edit-btn").forEach(function(el) {
-    el.style.display = adminMode ? "inline-flex" : "none";
-  });
-  
-  if (adminMode) {
-    var saved = sessionStorage.getItem(TOKEN_KEY);
-    if (saved) document.getElementById("tokenInput").value = saved;
-  }
+  var e = document.getElementById('adminToggle');
+  var b = document.getElementById('adminBar');
+  e.classList.toggle('active');
+  e.textContent = adminMode ? '[Exit Edit]' : '[Edit]';
+  b.classList.toggle('show');
+  document.querySelectorAll('.editable').forEach(function(el){el.contentEditable = adminMode; el.classList.toggle('editing',adminMode);});
+  document.querySelectorAll('.edit-hint,.add-card-btn,.img-edit-btn').forEach(function(el){el.style.display = adminMode ? '' : 'none';});
+  if(adminMode){var s=sessionStorage.getItem(TK);if(s)document.getElementById('tokenInput').value=s;}
 }
-
-function replaceImage(imgEl) {
-  var input = document.getElementById("fileInput");
-  input.onchange = function() {
-    var file = input.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(e) {
-      var dataUrl = e.target.result;
-      var token = document.getElementById("tokenInput").value.trim();
-      if (!token) { alert("Please enter GitHub Token first"); return; }
-      
-      var status = document.getElementById("adminStatus");
-      status.textContent = "Uploading image..."; status.className = "status";
-      
-      var repo = "huangzhaoquan400-afk/musee-handover";
-      var fileName = "images/edit_" + Date.now() + ".png";
-      
-      fetch("https://api.github.com/repos/" + repo + "/contents/" + fileName, {
-        headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+function addCard(sid){
+  var b = document.getElementById(sid);
+  if(!b) return; b = b.querySelector('.section-body'); if(!b) return;
+  var c = document.createElement('div'); c.className = 'card'; c.style.position = 'relative';
+  c.innerHTML = '<span onclick="this.parentElement.remove()" style="position:absolute;top:4px;right:4px;cursor:pointer;color:#ef4444;font-size:20px;z-index:5;">X</span><h3 class="editable">New Section</h3><p class="editable">Click to edit...</p>';
+  if(adminMode){c.querySelectorAll('.editable').forEach(function(el){el.contentEditable=true;el.classList.add('editing');});}
+  b.insertBefore(c, b.querySelector('.add-card-btn'));
+}
+function replaceImage(imgEl){
+  var f = document.getElementById('fileInput');
+  f.onchange = function(){
+    if(!f.files[0]) return;
+    var r = new FileReader();
+    r.onload = function(e){
+      var t = document.getElementById('tokenInput').value.trim();
+      if(!t){alert('Enter Token'); return;}
+      document.getElementById('adminStatus').textContent = 'Uploading...';
+      var repo = 'huangzhaoquan400-afk/musee-handover';
+      fetch('https://api.github.com/repos/'+repo+'/contents/images/edit_'+Date.now()+'.png',{
+        method:'PUT',
+        headers:{'Authorization':'token '+t,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+        body:JSON.stringify({message:'Upload image',content:e.target.result.split(',')[1],branch:'main'})
       })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        return fetch("https://api.github.com/repos/" + repo + "/contents/" + fileName, {
-          method: "PUT",
-          headers: { "Authorization": "token " + token, "Content-Type": "application/json", "Accept": "application/vnd.github.v3+json" },
-          body: JSON.stringify({ message: "Upload image", content: dataUrl.split(",")[1], branch: "main" })
-        });
-      })
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        if (data.content) {
-          imgEl.src = fileName;
-          status.textContent = "Image updated! Save to keep"; status.className = "status success";
-        }
-      })
-      .catch(function(err) {
-        status.textContent = "Error: " + err.message; status.className = "status error";
-      });
+      .then(function(r){return r.json();})
+      .then(function(d){if(d.content){imgEl.src=d.content.path;document.getElementById('adminStatus').textContent='Done!';}})
+      .catch(function(e){document.getElementById('adminStatus').textContent='Error: '+e.message;});
     };
-    reader.readAsDataURL(file);
+    r.readAsDataURL(f.files[0]);
   };
-  input.click();
+  f.click();
 }
-
-function addCard(sectionId) {
-  var body = document.getElementById(sectionId);
-  if (!body) return;
-  body = body.querySelector(".section-body");
-  if (!body) return;
-  var card = document.createElement("div");
-  card.className = "card";
-  var h3 = document.createElement("h3");
-  h3.className = "editable";
-  h3.contentEditable = adminMode;
-  h3.textContent = "New Section";
-  var p = document.createElement("p");
-  p.className = "editable";
-  p.contentEditable = adminMode;
-  p.textContent = "Click to edit this content...";
-  card.appendChild(h3);
-  card.appendChild(p);
-  body.insertBefore(card, body.querySelector(".add-card-btn"));
-}
-
-function saveToGitHub() {
-  var token = document.getElementById("tokenInput").value.trim();
-  var msg = document.getElementById("commitMsg").value.trim() || "Update content";
-  var status = document.getElementById("adminStatus");
-  
-  if (!token) { status.textContent = "Enter GitHub Token"; status.className = "status error"; return; }
-  sessionStorage.setItem(TOKEN_KEY, token);
-  
-  status.textContent = "Saving..."; status.className = "status";
-  var btn = document.getElementById("saveBtn");
-  btn.textContent = "Saving..."; btn.disabled = true;
-  
-  var html = "<!DOCTYPE html>" + document.documentElement.outerHTML;
-  var repo = "huangzhaoquan400-afk/musee-handover";
-  
-  fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
-    headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
+function saveToGitHub(){
+  var t = document.getElementById('tokenInput').value.trim();
+  var m = document.getElementById('commitMsg').value.trim() || 'Update';
+  var s = document.getElementById('adminStatus');
+  if(!t){s.textContent='Enter Token';return;}
+  sessionStorage.setItem(TK,t);
+  s.textContent='Saving...';
+  document.getElementById('saveBtn').textContent='Saving...';
+  var repo='huangzhaoquan400-afk/musee-handover';
+  var html='<!DOCTYPE html>'+document.documentElement.outerHTML;
+  fetch('https://api.github.com/repos/'+repo+'/contents/index.html',{
+    headers:{'Authorization':'token '+t,'Accept':'application/vnd.github.v3+json'}
   })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (data.message) throw new Error(data.message);
-    return fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
-      method: "PUT",
-      headers: { "Authorization": "token " + token, "Content-Type": "application/json", "Accept": "application/vnd.github.v3+json" },
-      body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(html))), sha: data.sha, branch: "main" })
+  .then(function(r){return r.json();})
+  .then(function(d){
+    if(d.message) throw Error(d.message);
+    return fetch('https://api.github.com/repos/'+repo+'/contents/index.html',{
+      method:'PUT',
+      headers:{'Authorization':'token '+t,'Content-Type':'application/json','Accept':'application/vnd.github.v3+json'},
+      body:JSON.stringify({message:m,content:btoa(unescape(encodeURIComponent(html))),sha:d.sha,branch:'main'})
     });
   })
-  .then(function(r) { return r.json(); })
-  .then(function(data) {
-    if (data.content) {
-      status.textContent = "Saved! Deploying in 1-2min"; status.className = "status success";
-      btn.textContent = "Saved!";
-      setTimeout(function() { btn.textContent = "Save to GitHub"; btn.disabled = false; }, 2000);
-    }
-  })
-  .catch(function(err) {
-    status.textContent = "Error: " + err.message; status.className = "status error";
-    btn.textContent = "Save to GitHub"; btn.disabled = false;
-  });
+  .then(function(r){return r.json();})
+  .then(function(d){if(d.content){s.textContent='Saved!';document.getElementById('saveBtn').textContent='Saved!';setTimeout(function(){document.getElementById('saveBtn').textContent='Save to GitHub';},2000);}})
+  .catch(function(e){s.textContent='Error: '+e.message;document.getElementById('saveBtn').textContent='Save to GitHub';});
 }
-
-window.addEventListener("scroll", function() {
-  var el = document.getElementById("backTop");
-  if (el) el.classList.toggle("show", window.scrollY > 500);
-});
+window.addEventListener('scroll',function(){var e=document.getElementById('backTop');if(e)e.classList.toggle('show',window.scrollY>500);});
 </script>
 
-<div class="modal" id="editModal" style="display:none;position:fixed;z-index:400;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,0.6);align-items:center;justify-content:center;">
-  <div style="background:#fff;border-radius:12px;width:90%;max-width:800px;max-height:85vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,0.3);">
-    <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid #e2e8f0;">
-      <h3 id="editTitle" style="font-size:16px;font-weight:600;margin:0;">编辑内容</h3>
-      <button onclick="closeEditModal()" style="background:none;border:none;font-size:24px;cursor:pointer;color:#64748b;">&times;</button>
-    </div>
-    <textarea id="editTextarea" style="flex:1;padding:20px 24px;border:none;font-size:14px;line-height:1.7;font-family:inherit;resize:none;outline:none;min-height:300px;width:100%;box-sizing:border-box;"></textarea>
-    <div style="display:flex;justify-content:flex-end;gap:8px;padding:12px 24px;border-top:1px solid #e2e8f0;">
-      <button onclick="closeEditModal()" style="padding:8px 20px;border-radius:6px;border:1px solid #e2e8f0;background:#fff;cursor:pointer;font-size:14px;">取消</button>
-      <button onclick="saveEdit()" style="padding:8px 20px;border-radius:6px;border:none;background:#6366f1;color:#fff;cursor:pointer;font-size:14px;font-weight:500;">✅ 确认修改</button>
-    </div>
-  </div>
-</div>
+
 
 <input type="file" id="fileInput" accept="image/*" style="display:none">
 </body>
