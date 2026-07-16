@@ -515,6 +515,10 @@ body {
 }
 .back-top.show { display: flex; }
 .back-top:hover { background: #f1f5f9; }
+
+.editable.editing { outline: 2px dashed #818cf8; outline-offset: 2px; border-radius: 4px; padding: 1px 4px; cursor: text; }
+.editable.editing:hover { background: #f8fafc; }
+.editable.editing:focus { outline: 2px solid #6366f1; background: #fff; }
 </style>
 </head>
 <body>
@@ -574,7 +578,7 @@ body {
     <!-- Hero -->
     <section id="overview" class="hero">
       <h2>👋 欢迎来到 MUSEE 实习工作</h2>
-      <p>本指南涵盖了实习生日常工作的完整流程与标准操作规范，包括客诉系统回复、常见问题处理、IM 审核以及支付掉单处理等核心内容。点击各板块标题即可展开查看具体内容。</p>
+      <p class="editable">本指南涵盖了实习生日常工作的完整流程与标准操作规范，包括客诉系统回复、常见问题处理、IM 审核以及支付掉单处理等核心内容。点击各板块标题即可展开查看具体内容。</p>
     </section>
 
     <!-- Daily Flow -->
@@ -585,23 +589,23 @@ body {
         <span class="section-badge">每天</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-1">
           <span class="edit-btn" onclick="editCard('card-auto-1')">✏️ 编辑</span>
           
-          <p>每日工作主线流程如下：</p>
+          <p class="editable">每日工作主线流程如下：</p>
           <ol class="step-list">
-            <li>
+            <li class="editable">
               <span class="step-num">1</span>
               <div><strong>回复客诉</strong><br>
                 包括：<span class="tag tag-blue">在线客服·群聊</span> <span class="tag tag-blue">申诉列表回复</span> <span class="tag tag-blue">用户反馈处理</span>
               </div>
             </li>
-            <li>
+            <li class="editable">
               <span class="step-num">2</span>
               <div><strong>用户 IM 审核</strong><br>重点封禁发送电话号码等违规行为</div>
             </li>
-            <li>
+            <li class="editable">
               <span class="step-num">3</span>
               <div><strong>处理支付掉单问题</strong><br>及时反馈 <span class="tag tag-blue">Cathy</span></div>
             </li>
@@ -616,12 +620,12 @@ body {
         <span class="section-badge">入职准备</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-2">
           <span class="edit-btn" onclick="editCard('card-auto-2')">✏️ 编辑</span>
           
-          <h3>① OMS 后台权限申请</h3>
-          <p>钉钉工作台 → OA审批 → 办公权限申请</p>
+          <h3 class="editable">① OMS 后台权限申请</h3>
+          <p class="editable">钉钉工作台 → OA审批 → 办公权限申请</p>
           <div class="info-box">
             <strong>权限类型：</strong>CMS &nbsp;|&nbsp; <strong>CMS 功能模块：</strong>如图 &nbsp;|&nbsp; <strong>备注：</strong>M1实习生替补<br>
             <strong>业务负责人：</strong>大侠 &nbsp;|&nbsp; <strong>抄送人：</strong>梦情 &amp; 健华
@@ -635,8 +639,8 @@ body {
         <div class="card" id="card-auto-3">
           <span class="edit-btn" onclick="editCard('card-auto-3')">✏️ 编辑</span>
           
-          <h3>② BI 报表权限申请</h3>
-          <p>钉钉工作台 → OA审批 → 办公权限申请</p>
+          <h3 class="editable">② BI 报表权限申请</h3>
+          <p class="editable">钉钉工作台 → OA审批 → 办公权限申请</p>
           <div class="img-single">
             <img src="images/image4.png" alt="BI报表权限" onclick="openLightbox(this.src)">
           </div>
@@ -644,8 +648,8 @@ body {
         <div class="card" id="card-auto-4">
           <span class="edit-btn" onclick="editCard('card-auto-4')">✏️ 编辑</span>
           
-          <h3>③ 网络连接</h3>
-          <p>公司网络为隐藏网络，部门网络信息如下：</p>
+          <h3 class="editable">③ 网络连接</h3>
+          <p class="editable">公司网络为隐藏网络，部门网络信息如下：</p>
           <div class="info-box">
             <strong>名称：</strong>boloji_pro &nbsp;|&nbsp; <strong>密码：</strong>qbigxcwo<br>
             <span style="font-size:13px;color:var(--text-muted);">如果密码不正确，联系蔡志毫</span>
@@ -654,16 +658,16 @@ body {
                 <div class="card" id="card-auto-5">
           <span class="edit-btn" onclick="editCard('card-auto-5')">✏️ 编辑</span>
           
-          <h3>④ SQL 汇总</h3>
-          <p><strong>BI 入口：</strong>自助分析 → 右键新建节点 → 粘贴 SQL → 按保存键</p>
+          <h3 class="editable">④ SQL 汇总</h3>
+          <p class="editable"><strong>BI 入口：</strong>自助分析 → 右键新建节点 → 粘贴 SQL → 按保存键</p>
           <div class="img-gallery">
             <img src="images/image5.png" alt="SQL入口" onclick="openLightbox(this.src)">
             <img src="images/image6.png" alt="SQL操作" onclick="openLightbox(this.src)">
             <img src="images/image7.png" alt="SQL操作" onclick="openLightbox(this.src)">
           </div>
 
-          <h4>1. 查询是否为低端机</h4>
-          <p>低端机用户在语聊房会看不到 emoji。在 SQL 中输入用户 uid 及对应时间，运行后如果 <code>device_level</code> 显示为 0，则该用户是低端机。</p>
+          <h4 class="editable">1. 查询是否为低端机</h4>
+          <p class="editable">低端机用户在语聊房会看不到 emoji。在 SQL 中输入用户 uid 及对应时间，运行后如果 <code>device_level</code> 显示为 0，则该用户是低端机。</p>
           <div class="code-block">SELECT  uid, slogtime, to_char(FROM_UNIXTIME(cast(logtime/1000 as bigint)),'yyyy-mm-dd hh:mi:ss') as logtime_text, action, ori_log['device_level'] as device_level, ori_log['mod'] as ori_mod, ori_log['brd'] as ori_brd, pkg
 FROM    dwd_dating_action_1d
 WHERE   dt &gt;= '20260620'
@@ -671,8 +675,8 @@ AND action == 'splash_start'
 AND uid == '522171494'
 LIMIT 20</div>
 
-          <h4>2. 查询 OMS 上查询不到的订单</h4>
-          <p>OMS 会隐藏距离当前比较久远的订单。通过以下 SQL 查询第三方订单数据。</p>
+          <h4 class="editable">2. 查询 OMS 上查询不到的订单</h4>
+          <p class="editable">OMS 会隐藏距离当前比较久远的订单。通过以下 SQL 查询第三方订单数据。</p>
           <div class="code-block">SELECT 
 	uid, 
 	p_tm, 
@@ -708,8 +712,8 @@ CASE
 END AS "pay_channel"
 FROM dwd_dating_total_user_pay_detail_1d WHERE dt  &gt;= '${dt_begin}' AND dt &lt;= '${dt_end}' AND uid = '${uid}'</div>
 
-          <h4>3. 流水查询</h4>
-          <p>查询用户在游戏、充值、礼物、蓝钻等方面的详细流水数据。替换 <code>${sdt}</code> 和 <code>${edt}</code> 为起止时间。</p>
+          <h4 class="editable">3. 流水查询</h4>
+          <p class="editable">查询用户在游戏、充值、礼物、蓝钻等方面的详细流水数据。替换 <code>${sdt}</code> 和 <code>${edt}</code> 为起止时间。</p>
           <div class="code-block">SELECT  dt
         ,game_id
         ,t1.uid
@@ -1127,7 +1131,7 @@ HAVING  (
 ) &gt; 0
 ;</div>
 
-          <h4>4. 四大条件查询 SQL</h4>
+          <h4 class="editable">4. 四大条件查询 SQL</h4>
           <div class="code-block"><span class="keyword">SELECT</span> 
 tm, uid, pkg,
 ori_log[<span class="string">'verc'</span>] <span class="keyword">AS</span> verc,
@@ -1155,7 +1159,7 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
         <span class="section-badge">SVIP 用户</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-6">
           <span class="edit-btn" onclick="editCard('card-auto-6')">✏️ 编辑</span>
           
@@ -1163,9 +1167,9 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
             <strong>操作路径：</strong>OMS 系统 → 客服管理 → 在线客服（群聊）
           </div>
           <ul>
-            <li>时间选择最近三天</li>
-            <li>直接筛选未读聊天</li>
-            <li><strong>建议：</strong>窗口常开，打开浏览器通知，上班开启，下班关闭</li>
+            <li class="editable">时间选择最近三天</li>
+            <li class="editable">直接筛选未读聊天</li>
+            <li class="editable"><strong>建议：</strong>窗口常开，打开浏览器通知，上班开启，下班关闭</li>
           </ul>
           <div class="img-single">
             <img src="images/image11.png" alt="在线客服群聊界面" onclick="openLightbox(this.src)">
@@ -1182,11 +1186,11 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
         <span class="section-badge">每天上午</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-7">
           <span class="edit-btn" onclick="editCard('card-auto-7')">✏️ 编辑</span>
           
-          <h3>操作流程</h3>
+          <h3 class="editable">操作流程</h3>
           <div class="info-box">
             <strong>操作路径：</strong>OMS 系统 → 申诉中心 → 申诉列表
           </div>
@@ -1195,24 +1199,24 @@ GET_JSON_OBJECT(ori_log[<span class="string">'detail'</span>], <span class="stri
             <img src="images/image13.png" alt="用户反馈界面" onclick="openLightbox(this.src)">
           </div>
           <ul>
-            <li>时间选择最近三天，选择普通用户、已挂起的客诉</li>
-            <li>申诉类型选择除了 Recharged not received，根据问题描述回复</li>
-            <li>用户提供付款截图 → 修改分类为 <span class="tag tag-yellow">recharged but not receive</span></li>
-            <li>反馈充值未到账但无截图 → 使用回复模板要求提供截图</li>
+            <li class="editable">时间选择最近三天，选择普通用户、已挂起的客诉</li>
+            <li class="editable">申诉类型选择除了 Recharged not received，根据问题描述回复</li>
+            <li class="editable">用户提供付款截图 → 修改分类为 <span class="tag tag-yellow">recharged but not receive</span></li>
+            <li class="editable">反馈充值未到账但无截图 → 使用回复模板要求提供截图</li>
           </ul>
           <div class="reply-box">
 Dear, please provide us with the screenshots of your rechargement and the pay order id, then our staff will help you check it.
           </div>
-          <p>回复后，通过所有已回复过的已挂起客诉（可在申诉列表左上角多选，批量审核）。</p>
+          <p class="editable">回复后，通过所有已回复过的已挂起客诉（可在申诉列表左上角多选，批量审核）。</p>
           <hr style="border:none;border-top:1px dashed var(--border);margin:16px 0;">
-          <h4>用户反馈处理</h4>
+          <h4 class="editable">用户反馈处理</h4>
           <div class="info-box">
             <strong>操作路径：</strong>OMS 系统 → 用户管理 → 用户反馈
           </div>
           <ul>
-            <li>选择时间近一周</li>
-            <li>Tag 选择 Others、Specific Issue（分两次筛选）</li>
-            <li>Reply Status 选择 Not Reply，点击 Reply 回复</li>
+            <li class="editable">选择时间近一周</li>
+            <li class="editable">Tag 选择 Others、Specific Issue（分两次筛选）</li>
+            <li class="editable">Reply Status 选择 Not Reply，点击 Reply 回复</li>
           </ul>
           <div class="img-single">
             <img src="images/image14.png" alt="用户反馈处理" onclick="openLightbox(this.src)">
@@ -1228,130 +1232,130 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <h2>常见问题及对应回复</h2>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="issue-recharge">
           <span class="edit-btn" onclick="editCard('issue-recharge')">✏️ 编辑</span>
           
-          <h3>1. 用户无法充值</h3>
+          <h3 class="editable">1. 用户无法充值</h3>
           <div class="info-box">
             <strong>通过 uid 和反馈时间</strong>，在 BI 中查询四大支付条件 sql，通过 reason 的原因回复用户。如果支付条件都正常，让用户确保网络再尝试支付。
           </div>
-          <h4>四大支付条件</h4>
+          <h4 class="editable">四大支付条件</h4>
           <ul>
-            <li>国家判断（cou）</li>
-            <li>SIM 卡（has_sim_card）</li>
-            <li>VPN（is_vpn）</li>
-            <li>支付 App（pay_apps）</li>
+            <li class="editable">国家判断（cou）</li>
+            <li class="editable">SIM 卡（has_sim_card）</li>
+            <li class="editable">VPN（is_vpn）</li>
+            <li class="editable">支付 App（pay_apps）</li>
           </ul>
           <div class="highlight-box">⚠️ 注意印度需下载对应支付 App；Hiiclub 没有 Gpay 支付方式</div>
           <div class="img-gallery">
             <img src="images/image15.png" alt="四大支付条件" onclick="openLightbox(this.src)">
             <img src="images/image16.png" alt="四大支付条件" onclick="openLightbox(this.src)">
           </div>
-          <h4>常用国家支付方式</h4>
+          <h4 class="editable">常用国家支付方式</h4>
           <table style="width:100%;border-collapse:collapse;margin:8px 0;font-size:14px;">
             <thead><tr style="background:#f1f5f9;"><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">国家</th><th style="padding:8px 12px;text-align:left;border-bottom:2px solid var(--border);">支付方式</th></tr></thead>
             <tbody><tr><td style="padding:8px 12px;border-bottom:1px solid var(--border);">印度</td><td style="padding:8px 12px;border-bottom:1px solid var(--border);">Paytm, Phonepe, Gpay</td></tr></tbody>
           </table>
           <div class="img-single"><img src="images/image17.png" alt="国家支付方式" onclick="openLightbox(this.src)"></div>
-          <h4>回复模板</h4>
-          <h5>检查网络设置</h5>
+          <h4 class="editable">回复模板</h4>
+          <h5 class="editable">检查网络设置</h5>
           <div class="reply-box">Hello. sorry for the inconvenience caused to you. Please check whether your internet or wifi functions normally and try it again, Thank you.<br><br>（in India we provide Paytm, Phonebe and Gpay for payment, but you need to download the corresponding payment method app.）</div>
-          <h5>地区特别支付方式</h5>
+          <h5 class="editable">地区特别支付方式</h5>
           <div class="reply-box">Dear, in *, you can use ** and ** to pay. Please note that you should not use a VPN when paying. If you have any questions, please contact me again. Thank you for your understanding.</div>
-          <h5>没有出现任何问题</h5>
+          <h5 class="editable">没有出现任何问题</h5>
           <div class="reply-box">Hello, I see that your latest recharge orders are all successful. If you have any further questions, please contact us again. Thank you for your understanding.</div>
         </div>
 <div class="card" id="issue-account">
           <span class="edit-btn" onclick="editCard('issue-account')">✏️ 编辑</span>
           
-          <h3>2. 帐号换绑 &amp; 账号恢复</h3>
-          <p>用户申诉需要恢复账号或换绑账户信息时，需提供以下信息：</p>
+          <h3 class="editable">2. 帐号换绑 &amp; 账号恢复</h3>
+          <p class="editable">用户申诉需要恢复账号或换绑账户信息时，需提供以下信息：</p>
           <ol>
-            <li>若有被删除账号的支付截图，先核实与支付记录是否相符</li>
-            <li>若没有另一 UID，回复用户先注册新账号（DID 需与旧帐号一致）并提供新 UID</li>
-            <li>若单纯更换换绑方式，核实 DID 或支付截图后，提供信息给 Cathy</li>
+            <li class="editable">若有被删除账号的支付截图，先核实与支付记录是否相符</li>
+            <li class="editable">若没有另一 UID，回复用户先注册新账号（DID 需与旧帐号一致）并提供新 UID</li>
+            <li class="editable">若单纯更换换绑方式，核实 DID 或支付截图后，提供信息给 Cathy</li>
           </ol>
           <div class="info-box"><strong>DID 查询方式：</strong>用户管理 → 用户列表 → 输入 UID → 查询 → Did</div>
           <div class="img-single"><img src="images/image18.png" alt="DID查询" onclick="openLightbox(this.src)"></div>
-          <h4>账号换绑</h4>
+          <h4 class="editable">账号换绑</h4>
           <div class="reply-box">If you wish to change your linked account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
-          <h4>账号恢复</h4>
+          <h4 class="editable">账号恢复</h4>
           <div class="reply-box">If you wish to reactivate your account, you will need to provide the following information: your new UID, your old UID, and a screenshot of your payment made using the old UID.</div>
         <div class="card" id="issue-call-game">
           <span class="edit-btn" onclick="editCard('issue-call-game')">✏️ 编辑</span>
           
-          <h3>3. 无法通话 &amp; 游戏问题</h3>
-          <h4>① 用户反馈无法通话</h4>
-          <p>用户钻石被扣 / 使用情况查询路径：</p>
+          <h3 class="editable">3. 无法通话 &amp; 游戏问题</h3>
+          <h4 class="editable">① 用户反馈无法通话</h4>
+          <p class="editable">用户钻石被扣 / 使用情况查询路径：</p>
           <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 用户流水明细 → 输入 uid、时间</div>
           <div class="img-single"><img src="images/image19.png" alt="用户流水明细" onclick="openLightbox(this.src)"></div>
-          <p>通话最低价格 <strong>1800 钻石/分钟</strong>，余额不足无法拨打。用户申诉则反馈给用户。</p>
-          <h4>② 视频/音频出现问题</h4>
+          <p class="editable">通话最低价格 <strong>1800 钻石/分钟</strong>，余额不足无法拨打。用户申诉则反馈给用户。</p>
+          <h4 class="editable">② 视频/音频出现问题</h4>
           <div class="reply-box">Please check the following:<br>1. Are audio and video permissions enabled in your mobile app settings?<br>2. Did you accidentally turn the video switch on/off? Users can currently control the camera.<br>3. If neither of the above applies and the problem persists after your checks, please contact us with a detailed explanation.</div>
-          <h4>③ 反馈挂断电话</h4>
+          <h4 class="editable">③ 反馈挂断电话</h4>
           <div class="info-box"><strong>操作路径：</strong>内容管理 → 视频通话记录 → 输入 uid、通话时间</div>
           <div class="img-single"><img src="images/image20.png" alt="视频通话记录" onclick="openLightbox(this.src)"></div>
-          <h4>④ 游戏问题</h4>
-          <p>用户钻石被扣 / 使用情况查询同前。用户表示游戏输得多想补偿，使用 BI SQL 查询。</p>
+          <h4 class="editable">④ 游戏问题</h4>
+          <p class="editable">用户钻石被扣 / 使用情况查询同前。用户表示游戏输得多想补偿，使用 BI SQL 查询。</p>
           <div class="img-single"><img src="images/image21.png" alt="游戏SQL" onclick="openLightbox(this.src)"></div>
-          <h5>蓝钻发放标准</h5>
-          <div class="highlight-box"><strong>背景：</strong>部分用户输游戏后找客服投诉，发蓝钻安抚用户<br><strong>用户特征：</strong>最近 7 天下注 ≥ 50 万宝石，且总体亏损<br><strong>发放金额：</strong><ul><li>近 15 天未补偿 → 补近 7 天亏损宝石数 × <strong>10%</strong> 的宝石</li><li>近 15 天已补偿 → 补近 7 天亏损宝石数 × <strong>5%</strong> 的宝石</li></ul><strong>注：</strong>蓝钻 : 宝石 = 100 : 1</div>
-          <h5>举例</h5>
-          <p>用户近 15 天第一次来客诉，近 7 天亏损 100 万宝石，则补偿 5 万宝石，对应 500 万蓝钻。</p>
-          <h5>补偿标准不足时安抚</h5>
+          <h5 class="editable">蓝钻发放标准</h5>
+          <div class="highlight-box"><strong>背景：</strong>部分用户输游戏后找客服投诉，发蓝钻安抚用户<br><strong>用户特征：</strong>最近 7 天下注 ≥ 50 万宝石，且总体亏损<br><strong>发放金额：</strong><ul><li class="editable">近 15 天未补偿 → 补近 7 天亏损宝石数 × <strong>10%</strong> 的宝石</li><li class="editable">近 15 天已补偿 → 补近 7 天亏损宝石数 × <strong>5%</strong> 的宝石</li></ul><strong>注：</strong>蓝钻 : 宝石 = 100 : 1</div>
+          <h5 class="editable">举例</h5>
+          <p class="editable">用户近 15 天第一次来客诉，近 7 天亏损 100 万宝石，则补偿 5 万宝石，对应 500 万蓝钻。</p>
+          <h5 class="editable">补偿标准不足时安抚</h5>
           <div class="reply-box">Hello, we are very sorry for the inconvenience. We have checked your gem turnover and it shows that you did indeed lose. Winning and losing are normal. We will increase your chances of winning the game. Thank you for your understanding.</div>
-          <h5>发放蓝钻时的说明</h5>
+          <h5 class="editable">发放蓝钻时的说明</h5>
           <div class="reply-box">发放蓝钻不是一直都有的（防止用户钻空子），是因为客户是我们的忠实客户，是在我们进行申请之后才能发放的，请客户及时使用，这些蓝钻会在下个月的一号清零。</div>
         <div class="card" id="issue-behavior">
           <span class="edit-btn" onclick="editCard('issue-behavior')">✏️ 编辑</span>
           
-          <h3>4. 用户行为问题</h3>
-          <h4>① 主播多账号</h4>
-          <p>用户或工会长反馈一个主播拥有多个账号：</p>
+          <h3 class="editable">4. 用户行为问题</h3>
+          <h4 class="editable">① 主播多账号</h4>
+          <p class="editable">用户或工会长反馈一个主播拥有多个账号：</p>
           <ul>
-            <li>在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及主播的多个 uid</li>
-            <li>同步反馈给用户：正在处理中，核实后封禁其他账号，只保留一个</li>
+            <li class="editable">在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及主播的多个 uid</li>
+            <li class="editable">同步反馈给用户：正在处理中，核实后封禁其他账号，只保留一个</li>
           </ul>
           <div class="img-single"><img src="images/image22.png" alt="主播多账号" onclick="openLightbox(this.src)"></div>
-          <h4>② 用户冲突矛盾</h4>
-          <p>举报私信 abuse 或分享联系方式：</p>
-          <ul><li>在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及相关截图证据</li></ul>
-          <h5>无违规</h5>
+          <h4 class="editable">② 用户冲突矛盾</h4>
+          <p class="editable">举报私信 abuse 或分享联系方式：</p>
+          <ul><li class="editable">在后台客诉问题沟通群里 <span class="tag tag-blue">@苏苏</span>，提供举报者 uid 及相关截图证据</li></ul>
+          <h5 class="editable">无违规</h5>
           <div class="reply-box">Dear, sorry that our staff found that this user has not violated any rules. If you have some evidences of them, please provide us with some screenshots or some videos, our staff will figure it out. Thanks for your feedback and supporting.</div>
-          <h5>警告用户</h5>
+          <h5 class="editable">警告用户</h5>
           <div class="reply-box">You have been reported and verified for abusing in your user name. （具体违规行为）Please stop your behavior and change it. If this behavior is reported and verified again, we will ban your account.</div>
         <div class="card" id="issue-topup">
           <span class="edit-btn" onclick="editCard('issue-topup')">✏️ 编辑</span>
           
-          <h3>5. 充值未到账（反复反馈 / 在线客服）</h3>
-          <h4>① 核实钻石充值订单</h4>
+          <h3 class="editable">5. 充值未到账（反复反馈 / 在线客服）</h3>
+          <h4 class="editable">① 核实钻石充值订单</h4>
           <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择钻石 → 输入 uid 和时间</div>
           <div class="highlight-box">⏱ 注意将支付截图上的时间转换为印度当地时间后与 OMS 时间对比，OMS 时间会稍慢一点</div>
-          <h4>② 核实 VIP 重复充值</h4>
+          <h4 class="editable">② 核实 VIP 重复充值</h4>
           <div class="info-box"><strong>操作路径：</strong>OMS 系统 → 财务管理 → 充值订单 → 充值类型选择 VIP → 输入 uid 和时间</div>
           <div class="img-single"><img src="images/image23.png" alt="VIP充值订单" onclick="openLightbox(this.src)"></div>
-          <p>VIP 月卡和周卡重复成功充值不会叠加金额，只会叠加天数。用户可能以为没收到，其实是月卡/周卡还未生效。</p>
+          <p class="editable">VIP 月卡和周卡重复成功充值不会叠加金额，只会叠加天数。用户可能以为没收到，其实是月卡/周卡还未生效。</p>
           <div class="reply-box">Dear, you recharged for two VIP monthly cards, but the monthly card only stacks on a daily basis. That means the second monthly card will only become effective after your first monthly card expires. Additionally, both VIP monthly and VIP weekly cards require you to log in to the app daily to claim a portion of the gems. If you forget to log in on a particular day and miss out on claiming them, we cannot provide compensation.</div>
-          <h4>③ 订单 cancel</h4>
-          <p>如果订单状态显示 cancel 而用户反复反馈，将支付截图及 uid 发到 Feedback Issue 群并 <span class="tag tag-yellow">@ankit</span> 查询订单状态。</p>
+          <h4 class="editable">③ 订单 cancel</h4>
+          <p class="editable">如果订单状态显示 cancel 而用户反复反馈，将支付截图及 uid 发到 Feedback Issue 群并 <span class="tag tag-yellow">@ankit</span> 查询订单状态。</p>
         <div class="card" id="issue-live">
           <span class="edit-btn" onclick="editCard('issue-live')">✏️ 编辑</span>
           
-          <h3>6. Live / Party Room 问题</h3>
-          <h4>① 无法观看直播 / 黑屏</h4>
-          <p>让用户提供截图，同时检查网络设置。</p>
+          <h3 class="editable">6. Live / Party Room 问题</h3>
+          <h4 class="editable">① 无法观看直播 / 黑屏</h4>
+          <p class="editable">让用户提供截图，同时检查网络设置。</p>
           <div class="reply-box">Hello, we are very sorry for the inconvenience. Please switch to a stable network first, and also attach screenshots or videos showing that you were unable to enter the live room or party room. This will help us resolve the issue as soon as possible. Thank you for your support and understanding.</div>
-          <h4>② 男性用户想直播</h4>
-          <p>目前只有 LV1 以上用户才能看到 Live/Party Room &amp; Game。回复用户：</p>
+          <h4 class="editable">② 男性用户想直播</h4>
+          <p class="editable">目前只有 LV1 以上用户才能看到 Live/Party Room &amp; Game。回复用户：</p>
           <div class="reply-box">Hello, we are very sorry for the inconvenience. Currently, live streaming permissions are only open to hosts, not to users. We suggest you go to the party room to play. Thank you for your support and understanding.</div>
         <div class="card" id="issue-guild">
           <span class="edit-btn" onclick="editCard('issue-guild')">✏️ 编辑</span>
           
-          <h3>7. 想当工会长或币商</h3>
-          <h4>想当工会长</h4>
+          <h3 class="editable">7. 想当工会长或币商</h3>
+          <h4 class="editable">想当工会长</h4>
           <div class="reply-box">Thanks for your supporting to our app. If you would like to be an agency leader, please contact our staff on whatsapp：+44 7749 895663, our staff will reply.</div>
-          <h4>想当币商</h4>
+          <h4 class="editable">想当币商</h4>
           <div class="reply-box">Thanks for your supporting to our app. If you would like to be a coin seller, please contact our staff on whatsapp：+1 (385) 266-8868, our staff will reply.</div>
       </div>
     </section><section id="im-review" class="section">
@@ -1361,7 +1365,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="section-badge">重点封禁</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-8">
           <span class="edit-btn" onclick="editCard('card-auto-8')">✏️ 编辑</span>
           
@@ -1370,17 +1374,17 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <img src="images/image24.png" alt="IM审核" onclick="openLightbox(this.src)">
             <img src="images/image25.png" alt="IM审核" onclick="openLightbox(this.src)">
           </div>
-          <p>根据敏感词识别违规情形，重点封禁：</p>
+          <p class="editable">根据敏感词识别违规情形，重点封禁：</p>
           <ul>
-            <li>工会在公屏抢主播</li>
-            <li>向用户/主播发送垃圾信息（索要或给出联系方式）</li>
+            <li class="editable">工会在公屏抢主播</li>
+            <li class="editable">向用户/主播发送垃圾信息（索要或给出联系方式）</li>
           </ul>
           <div class="highlight-box">不确定是否需要封禁？截图私信询问 <span class="tag tag-blue">@罗昕雨</span></div>
         </div>
         <div class="card" id="card-auto-9">
           <span class="edit-btn" onclick="editCard('card-auto-9')">✏️ 编辑</span>
           
-          <h3>违规封禁案例</h3>
+          <h3 class="editable">违规封禁案例</h3>
           <div class="img-gallery">
             <img src="images/image26.png" alt="封禁案例" onclick="openLightbox(this.src)">
             <img src="images/image27.png" alt="封禁案例" onclick="openLightbox(this.src)">
@@ -1419,19 +1423,19 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <h2>处理支付掉单问题</h2>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-10">
           <span class="edit-btn" onclick="editCard('card-auto-10')">✏️ 编辑</span>
           
-          <h3>业务背景</h3>
-          <p>业务相关国家接入的支付渠道不稳定，用户充值创单成功后可能面临订单充值失败、被取消、到账延迟等情况，该类订单称为 <strong>"掉单" / "充值不到账订单"</strong>。需跟进掉单情况，提高用户充值成功率。</p>
+          <h3 class="editable">业务背景</h3>
+          <p class="editable">业务相关国家接入的支付渠道不稳定，用户充值创单成功后可能面临订单充值失败、被取消、到账延迟等情况，该类订单称为 <strong>"掉单" / "充值不到账订单"</strong>。需跟进掉单情况，提高用户充值成功率。</p>
           <div class="img-single"><img src="images/image36.png" alt="掉单业务背景" onclick="openLightbox(this.src)"></div>
         </div>
         <div class="card" id="card-auto-11">
           <span class="edit-btn" onclick="editCard('card-auto-11')">✏️ 编辑</span>
           
-          <h3>需要你做的</h3>
-          <p>了解充值不到账订单处理流程（由印度小编 <span class="tag tag-yellow">@ankit</span> 负责掉单收集），将 OMS 每日收到的所有掉单反馈到不同支付渠道，跟进处理结果，提高支付成功率。</p>
+          <h3 class="editable">需要你做的</h3>
+          <p class="editable">了解充值不到账订单处理流程（由印度小编 <span class="tag tag-yellow">@ankit</span> 负责掉单收集），将 OMS 每日收到的所有掉单反馈到不同支付渠道，跟进处理结果，提高支付成功率。</p>
         </div>
       </div>
     </section>
@@ -1443,11 +1447,11 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <h2>监督小编每日收集掉单</h2>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-12">
           <span class="edit-btn" onclick="editCard('card-auto-12')">✏️ 编辑</span>
           
-          <h3>掉单渠道表格</h3>
+          <h3 class="editable">掉单渠道表格</h3>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin:12px 0;">
             <span class="tag tag-blue">网盟 - QUARK</span>
             <span class="tag tag-green">Dpay - DPAY</span>
@@ -1455,18 +1459,18 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <span class="tag tag-red">Happypay</span>
             <span class="tag tag-blue">Payermax</span>
           </div>
-          <h4>每日监督流程</h4>
+          <h4 class="editable">每日监督流程</h4>
           <div class="img-gallery">
             <img src="images/image37.png" alt="监督小编" onclick="openLightbox(this.src)">
             <img src="images/image38.png" alt="Feedback Issue群" onclick="openLightbox(this.src)">
           </div>
           <ol>
-            <li>印度小编（ankit）每天需将 <strong>3pm 前</strong> 提交到 OMS 的不同渠道掉单收集到对应表格</li>
-            <li>进入 OMS → 申诉中心 → 申诉列表</li>
-            <li>提交时间筛选为 <strong>前一天 3pm 到当天 3pm</strong></li>
-            <li>工单状态选 <strong>"待处理"</strong>，申诉类型选 <strong>"Recharge not received"</strong></li>
-            <li>查看小编是否清空当天掉单列表</li>
-            <li>若仍有工单显示，在 Feedback Issue 群 <span class="tag tag-yellow">@ankit</span> 询问原因</li>
+            <li class="editable">印度小编（ankit）每天需将 <strong>3pm 前</strong> 提交到 OMS 的不同渠道掉单收集到对应表格</li>
+            <li class="editable">进入 OMS → 申诉中心 → 申诉列表</li>
+            <li class="editable">提交时间筛选为 <strong>前一天 3pm 到当天 3pm</strong></li>
+            <li class="editable">工单状态选 <strong>"待处理"</strong>，申诉类型选 <strong>"Recharge not received"</strong></li>
+            <li class="editable">查看小编是否清空当天掉单列表</li>
+            <li class="editable">若仍有工单显示，在 Feedback Issue 群 <span class="tag tag-yellow">@ankit</span> 询问原因</li>
           </ol>
         </div>
       </div>
@@ -1481,14 +1485,14 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <h2>网盟（QUARK）掉单处理流程</h2>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-13">
           <span class="edit-btn" onclick="editCard('card-auto-13')">✏️ 编辑</span>
           
-          <h3>处理原则</h3>
-          <div class="info-box"><ol><li>先在商户平台上寻找是否有对应订单</li><li>若有 → 反馈在商户平台上</li><li>若无 → 登记于网盟充值问题汇总表</li></ol></div>
-          <h4>商户平台链接</h4>
-          <p><a href="https://quark-pay.com/merchant/dropOrder/dropOrderQuery" target="_blank" style="color:var(--primary);">https://quark-pay.com/merchant/dropOrder/dropOrderQuery</a></p>
+          <h3 class="editable">处理原则</h3>
+          <div class="info-box"><ol><li class="editable">先在商户平台上寻找是否有对应订单</li><li class="editable">若有 → 反馈在商户平台上</li><li class="editable">若无 → 登记于网盟充值问题汇总表</li></ol></div>
+          <h4 class="editable">商户平台链接</h4>
+          <p class="editable"><a href="https://quark-pay.com/merchant/dropOrder/dropOrderQuery" target="_blank" style="color:var(--primary);">https://quark-pay.com/merchant/dropOrder/dropOrderQuery</a></p>
           <div class="img-gallery">
             <img src="images/image39.png" alt="网盟掉单" onclick="openLightbox(this.src)">
             <img src="images/image40.png" alt="网盟掉单" onclick="openLightbox(this.src)">
@@ -1498,15 +1502,15 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <img src="images/image44.png" alt="网盟掉单" onclick="openLightbox(this.src)">
             <img src="images/image45.png" alt="网盟掉单" onclick="openLightbox(this.src)">
           </div>
-          <h4>操作步骤</h4>
+          <h4 class="editable">操作步骤</h4>
           <ol>
-            <li>打开 qp 表格，复制待处理掉单的订单号</li>
-            <li>进入网盟商户平台，点击掉单管理 → 掉单查询</li>
-            <li>在"商户订单号"粘贴订单号，点击查询</li>
-            <li>若能查出该笔掉单 → 点击 <strong>"添加至掉单列表"</strong> 进行掉单处理及进度跟踪</li>
-            <li>上传用户支付成功截图（进入掉单列表 → 点击操作栏"上传截图"）</li>
-            <li>最多允许 3 份截图，上传前注意核对信息</li>
-            <li>截图上传后返回 QUARK 表格，在 platform 栏标记 <strong>"1"</strong> 表示已反馈</li>
+            <li class="editable">打开 qp 表格，复制待处理掉单的订单号</li>
+            <li class="editable">进入网盟商户平台，点击掉单管理 → 掉单查询</li>
+            <li class="editable">在"商户订单号"粘贴订单号，点击查询</li>
+            <li class="editable">若能查出该笔掉单 → 点击 <strong>"添加至掉单列表"</strong> 进行掉单处理及进度跟踪</li>
+            <li class="editable">上传用户支付成功截图（进入掉单列表 → 点击操作栏"上传截图"）</li>
+            <li class="editable">最多允许 3 份截图，上传前注意核对信息</li>
+            <li class="editable">截图上传后返回 QUARK 表格，在 platform 栏标记 <strong>"1"</strong> 表示已反馈</li>
           </ol>
         </div>
       </div>
@@ -1526,7 +1530,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
         <span class="section-badge">同 Bbpay / Happypay / 3qp</span>
         <span class="toggle-icon">▼</span>
       </div>
-      <div class="section-body">
+      <div class="section-body">\n<div class="edit-hint" style="display:none;padding:8px 16px;margin-bottom:8px;background:#eef2ff;border-radius:6px;font-size:13px;color:#4f46e5;">📝 编辑模式下可直接点击下方文字修改内容</div>
         <div class="card" id="card-auto-14">
           <span class="edit-btn" onclick="editCard('card-auto-14')">✏️ 编辑</span>
           
@@ -1536,11 +1540,11 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
             <img src="images/image48.png" alt="Dpay掉单" onclick="openLightbox(this.src)">
           </div>
           <ol>
-            <li>打开 DPAY 谷歌表，若有新增掉单，复制到钉钉表</li>
-            <li>通过订单号 Order id 在 OMS 系统 → 财务管理 → 充值订单查询 <strong>pay order id</strong> 和 <strong>p order id</strong>，填入钉钉表，提醒 <span class="tag tag-blue">梦情</span> 处理</li>
-            <li>将订单截图保存到本地，以 pay order id 命名截图</li>
-            <li>按不同调单渠道建立文件夹分类</li>
-            <li>统一以压缩包形式发送给梦情</li>
+            <li class="editable">打开 DPAY 谷歌表，若有新增掉单，复制到钉钉表</li>
+            <li class="editable">通过订单号 Order id 在 OMS 系统 → 财务管理 → 充值订单查询 <strong>pay order id</strong> 和 <strong>p order id</strong>，填入钉钉表，提醒 <span class="tag tag-blue">梦情</span> 处理</li>
+            <li class="editable">将订单截图保存到本地，以 pay order id 命名截图</li>
+            <li class="editable">按不同调单渠道建立文件夹分类</li>
+            <li class="editable">统一以压缩包形式发送给梦情</li>
           </ol>
         </div>
       </div>
@@ -1548,7 +1552,7 @@ Dear, please provide us with the screenshots of your rechargement and the pay or
 
     <!-- Footer -->
     <div style="margin-top:40px;padding-top:24px;border-top:1px solid var(--border);text-align:center;font-size:13px;color:var(--text-muted);">
-      <p>MUSEE 实习生工作交接指南 · 基于原始文档整理</p>
+      <p class="editable">MUSEE 实习生工作交接指南 · 基于原始文档整理</p>
     </div>
 
   </main>
@@ -1685,94 +1689,75 @@ navToggle.addEventListener('click', () => {
 <!-- Back to top -->
 <div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
 
-<script>﻿var adminMode = false;
-var tokenKey = "gh_token_musee";
+<script>
+var adminMode = false;
+var TOKEN_KEY = "gh_token_musee";
 
 function toggleAdmin() {
   adminMode = !adminMode;
   var btn = document.getElementById("adminToggle");
   var bar = document.getElementById("adminBar");
   btn.classList.toggle("active");
-  btn.textContent = adminMode ? "\uD83D\uDD13 退出编辑" : "\uD83D\uDD12 编辑";
+  btn.textContent = adminMode ? "🔓 退出编辑" : "🔒 编辑";
   bar.classList.toggle("show");
-  document.querySelectorAll(".edit-btn").forEach(function(el) { el.style.display = adminMode ? "inline" : "none"; });
+  
+  // Toggle edit mode on text
+  document.querySelectorAll(".editable").forEach(function(el) {
+    el.contentEditable = adminMode;
+    el.classList.toggle("editing", adminMode);
+  });
+  
+  // Show/hide hints
+  document.querySelectorAll(".edit-hint").forEach(function(el) {
+    el.style.display = adminMode ? "block" : "none";
+  });
+  
   if (adminMode) {
-    var saved = sessionStorage.getItem(tokenKey);
+    var saved = sessionStorage.getItem(TOKEN_KEY);
     if (saved) document.getElementById("tokenInput").value = saved;
   }
 }
 
-function editCard(cardId) {
-  var card = document.getElementById(cardId);
-  if (!card) return;
-  var modal = document.getElementById("editModal");
-  var textarea = document.getElementById("editTextarea");
-  var title = document.getElementById("editTitle");
-  var h3 = card.querySelector("h3");
-  title.textContent = h3 ? h3.textContent : "编辑内容";
-  // Collect text elements, skip image containers
-  var texts = [];
-  card.querySelectorAll("p, li, h4, h5, .reply-box, .info-box, .highlight-box, .warning-box, .code-block").forEach(function(el) {
-    if (el.closest(".img-gallery") || el.closest(".img-single")) return;
-    texts.push(el.outerHTML);
-  });
-  textarea.value = texts.join("\n---\n");
-  modal.dataset.editCardId = cardId;
-  modal.style.display = "flex";
-}
-
-function closeEditModal() {
-  document.getElementById("editModal").style.display = "none";
-}
-
-function saveEdit() {
-  var modal = document.getElementById("editModal");
-  var textarea = document.getElementById("editTextarea");
-  var cardId = modal.dataset.editCardId;
-  var card = document.getElementById(cardId);
-  if (!card) { closeEditModal(); return; }
-  var parts = textarea.value.split("\n---\n");
-  var idx = 0;
-  card.querySelectorAll("p, li, h4, h5, .reply-box, .info-box, .highlight-box, .warning-box, .code-block").forEach(function(el) {
-    if (el.closest(".img-gallery") || el.closest(".img-single")) return;
-    if (idx < parts.length && parts[idx].trim()) { el.outerHTML = parts[idx]; idx++; }
-  });
-  modal.style.display = "none";
-}
-
 function saveToGitHub() {
   var token = document.getElementById("tokenInput").value.trim();
-  var msg = document.getElementById("commitMsg").value.trim() || "Update content via admin panel";
+  var msg = document.getElementById("commitMsg").value.trim() || "Update content";
   var status = document.getElementById("adminStatus");
-  if (!token) { status.textContent = "请输入 GitHub Token"; status.className = "status error"; return; }
-  sessionStorage.setItem(tokenKey, token);
-  status.textContent = "正在保存..."; status.className = "status";
+  
+  if (!token) { status.textContent = "❌ 请输入 GitHub Token"; status.className = "status error"; return; }
+  sessionStorage.setItem(TOKEN_KEY, token);
+  
+  status.textContent = "🔄 正在保存..."; status.className = "status";
   var btn = document.getElementById("saveBtn");
   btn.textContent = "⏳ 保存中..."; btn.disabled = true;
+  
   var html = "<!DOCTYPE html>\n" + document.documentElement.outerHTML;
   var repo = "huangzhaoquan400-afk/musee-handover";
+  
+  // Get SHA
   fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
     headers: { "Authorization": "token " + token, "Accept": "application/vnd.github.v3+json" }
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
     if (data.message) throw new Error(data.message);
+    var sha = data.sha;
+    var encoded = btoa(unescape(encodeURIComponent(html)));
     return fetch("https://api.github.com/repos/" + repo + "/contents/index.html", {
       method: "PUT",
       headers: { "Authorization": "token " + token, "Content-Type": "application/json", "Accept": "application/vnd.github.v3+json" },
-      body: JSON.stringify({ message: msg, content: btoa(unescape(encodeURIComponent(html))), sha: data.sha, branch: "main" })
+      body: JSON.stringify({ message: msg, content: encoded, sha: sha, branch: "main" })
     });
   })
   .then(function(r) { return r.json(); })
   .then(function(data) {
     if (data.content) {
-      status.textContent = "✅ 保存成功！1-2分钟后更新"; status.className = "status success";
+      status.textContent = "✅ 保存成功！1-2分钟部署"; status.className = "status success";
       btn.textContent = "✅ 已保存";
       setTimeout(function() { btn.textContent = "💾 保存到 GitHub"; btn.disabled = false; }, 2000);
     }
   })
   .catch(function(err) {
-    status.textContent = "❌ " + err.message; status.className = "status error";
+    status.textContent = "❌ 错误: " + err.message; status.className = "status error";
     btn.textContent = "💾 保存到 GitHub"; btn.disabled = false;
   });
 }
